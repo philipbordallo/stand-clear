@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description }}">
+
+  <title>{{ title }}</title>
+
+  <meta name="format-detection" content="telephone=no">
+
+  <style type="text/css">
+    noscript { font-family: monospace; }
+  </style>
+  {{#each stylesheet}}
+    <link rel="stylesheet" type="text/css" href="{{ this }}">
+  {{/each}}
+</head>
+<body>
+  <noscript>This site requires JavaScript</noscript>
+
+  <div id="application"></div>
+
+  {{#each script}}
+    <script src="{{ this }}"></script>
+  {{/each}}
+</body>
+</html>
