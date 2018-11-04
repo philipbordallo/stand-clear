@@ -14,8 +14,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config ./configs/webpack.config.js",
-    "build": "NODE_ENV=production webpack --config ./configs/webpack.config.js --progress",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "NODE_ENV=production webpack --config ./configs/webpack.config.js",
+    "build:server": "NODE_ENV=production netlify-lambda build --config ./configs/webpack.server.config.js ./src/server/functions/",
+    "client": "NODE_ENV=development webpack-dev-server --config ./configs/webpack.client.config.js",
+    "server": "NODE_ENV=development netlify-lambda serve --config ./configs/webpack.server.config.js ./src/server/functions/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "babel": {
@@ -39,6 +42,7 @@
     "handlebars": "^4.0.12",
     "handlebars-loader": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "netlify-lambda": "^1.0.2",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.3.0",
     "style-loader": "^0.23.1",
@@ -51,6 +55,7 @@
     "qs": "^6.5.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-hot-loader": "^4.3.11"
+    "react-hot-loader": "^4.3.11",
+    "superagent": "^3.8.3"
   }
 }

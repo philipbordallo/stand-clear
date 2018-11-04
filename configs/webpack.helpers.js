@@ -2,7 +2,8 @@ const path = require('path');
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const CONFIGS_PATH = path.resolve(ROOT_PATH, 'configs');
-const APP_PATH = path.resolve(ROOT_PATH, 'src');
+const CLIENT_PATH = path.resolve(ROOT_PATH, 'src', 'client');
+const SERVER_PATH = path.resolve(ROOT_PATH, 'src', 'server');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
 const LOADER = {
@@ -39,21 +40,17 @@ const LOADER = {
   }
 };
 
-const RESOLVER = {
-  extensions: ['.js', '.jsx', '.css'],
-  modules: [APP_PATH, 'node_modules']
-};
-
 const DEFINE_ENV = {
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  'process.env.BART_API_KEY': JSON.stringify(process.env.BART_API_KEY),
 };
 
 module.exports = {
   DEFINE_ENV,
   ROOT_PATH,
   CONFIGS_PATH,
-  APP_PATH,
+  CLIENT_PATH,
+  SERVER_PATH,
   DIST_PATH,
   LOADER,
-  RESOLVER,
-}
+};
