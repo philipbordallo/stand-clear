@@ -1,0 +1,15 @@
+function advisoriesParser(data) {
+  if (data && data.root) {
+    return {
+      date: data.root.date,
+      time: data.root.time,
+      list: data.root.bsa.map(advisory => ({
+        description: advisory.description['#cdata-section'],
+      })),
+    };
+  }
+
+  return null;
+}
+
+export default advisoriesParser;
