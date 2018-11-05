@@ -39,21 +39,6 @@ const RULES = {
   }
 };
 
-const PLUGINS = [
-  new webpack.DefinePlugin(DEFINE_ENV),
-  new webpack.SourceMapDevToolPlugin({
-    test: /\.(js|jsx)$/,
-    filename: '[file].map'
-  }),
-  new HTMLWebpackPlugin({
-    template: path.resolve(CLIENT_PATH, 'entry.html.js'),
-    inject: false,
-    minify: false
-  }),
-  isDevelopment ? new webpack.NamedModulesPlugin() : null,
-  isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-].filter(Boolean);
-
 const DEV_SERVER = {
   compress: true,
   contentBase: DIST_PATH,
@@ -85,7 +70,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(DIST_PATH, 'client'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
     publicPath: `/`
   },
   devServer: isDevelopment ? DEV_SERVER : undefined,
@@ -103,5 +88,18 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css'],
     modules: [CLIENT_PATH, 'node_modules']
   },
-  plugins: PLUGINS
+  plugins: [
+    new webpack.DefinePlugin(DEFINE_ENV),
+    new webpack.SourceMapDevToolPlugin({
+      test: /\.(js|jsx)$/,
+      filename: '[file].map'
+    }),
+    new HTMLWebpackPlugin({
+      template: path.resolve(CLIENT_PATH, 'entry.html.js'),
+      inject: false,
+      minify: false
+    }),
+    isDevelopment ? new webpack.NamedModulesPlugin() : null,
+    isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
+  ].filter(Boolean),
 };

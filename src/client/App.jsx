@@ -1,21 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PT from 'prop-types';
 
-import { hot } from 'react-hot-loader';
+import { useResource, useLogger } from 'hooks';
+
+import { hot, setConfig } from 'react-hot-loader';
 
 import 'assets/base/styles';
 
-function App() {
-  fetch('/.netlify/functions/advisories')
-    .then(response => response.json())
-    .then(data => console.log(data));
+// Make sure Hot Reload works with function components
+setConfig({ pureSFC: true });
 
-  fetch('/.netlify/functions/arrivals/19th')
-    .then(response => response.json())
-    .then(data => console.log(data));
+
+function Button(props) {
+  const { children, onClick } = props;
+
+  return (
+    <button type="button" onClick={ onClick }>
+      { children }
+    </button>
+  );
+}
+Button.propTypes = {
+  children: PT.node,
+  onClick: PT.func,
+};
+Button.defaultProps = {
+  children: '',
+  onClick() {},
+};
+
+function App() {
+  const [selectedStation, setSelectedStation] = useState('19th');
+
+  const advisories = useResource({
+    url: '/.netlify/functions/advisories',
+  });
+
+  const currentStation = useResource({
+    url: `/.netlify/functions/arrivals/${selectedStation}`,
+  }, [selectedStation]);
+
+  function handleClick(station) {
+    setSelectedStation(station);
+  }
+
+  useLogger({ currentStation, selectedStation, advisories });
 
   return (
     <main>
-      Hello
+      <Button onClick={ () => { handleClick('powl'); } }>Powell</Button>
+      <Button onClick={ () => { handleClick('lake'); } }>Lake Merrit</Button>
+
+      { !currentStation.isLoading && currentStation.hasLoaded ? (
+        <div>
+          { currentStation.data.abbreviation }
+        </div>
+      ) : null }
     </main>
   );
 }

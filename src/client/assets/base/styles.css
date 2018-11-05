@@ -10,3 +10,9 @@ main {
   margin: auto;
   padding: 0 15px;
 }
+
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  font-weight: 700;
+}
