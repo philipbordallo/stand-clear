@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
-const logger = console;
-
 function useLogger(items = {}) {
   const watchedItems = Object.keys(items)
     .reduce((collection, item) => collection.concat([items[item]]), []);
 
   useEffect(() => {
-    logger.log(items);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(items); // eslint-disable-line no-console
+    }
   }, watchedItems);
 }
 

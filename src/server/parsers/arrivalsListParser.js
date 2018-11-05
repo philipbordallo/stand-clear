@@ -15,11 +15,11 @@ function arrivalsListParser(data) {
         direction: arrival.direction,
         canBikesRide: Boolean(Number(arrival.bikeflag)),
         color: arrival.color,
-        delay: arrival.delay,
+        delay: Number(arrival.delay),
         hexColor: arrival.hexcolor,
         isLimited: Boolean(Number(location.limited)),
-        length: arrival.length,
-        minutes: arrival.minutes,
+        length: Number(arrival.length),
+        minutes: Number(arrival.minutes),
         platform: arrival.platform,
       };
     });
