@@ -22,6 +22,7 @@ function App() {
     <main>
       <Button onClick={ () => { handleClick('powl'); } }>Powell</Button>
       <Button onClick={ () => { handleClick('lake'); } }>Lake Merrit</Button>
+      <Button onClick={ () => { handleClick('19th'); } }>19th Street Oakland</Button>
       <StationArrivalsPage selectedStation={ selectedStation } />
     </main>
   );

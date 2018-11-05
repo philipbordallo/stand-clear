@@ -19,7 +19,7 @@ function arrivalsListParser(data) {
         hexColor: arrival.hexcolor,
         isLimited: Boolean(Number(location.limited)),
         length: Number(arrival.length),
-        minutes: Number(arrival.minutes),
+        minutes: arrival.minutes,
         platform: arrival.platform,
       };
     });
