@@ -45,6 +45,10 @@ const DEFINE_ENV = {
   'process.env.BART_API_KEY': JSON.stringify(process.env.BART_API_KEY),
 };
 
+const STATS = {
+  modules: false
+};
+
 module.exports = {
   DEFINE_ENV,
   ROOT_PATH,
@@ -53,4 +57,5 @@ module.exports = {
   SERVER_PATH,
   DIST_PATH,
   LOADER,
+  STATS,
 };

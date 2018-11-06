@@ -7,6 +7,7 @@ const {
   DIST_PATH,
   ROOT_PATH,
   DEFINE_ENV,
+  STATS,
 } = require('./webpack.helpers');
 
 const RULES = {
@@ -49,5 +50,6 @@ module.exports = {
       ...DEFINE_ENV,
       'global.GENTLY': false // Fixes issue https://github.com/felixge/node-formidable/issues/337
     }),
-  ]
+  ],
+  stats: STATS,
 }

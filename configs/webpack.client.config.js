@@ -8,6 +8,7 @@ const {
   DIST_PATH,
   ROOT_PATH,
   DEFINE_ENV,
+  STATS,
 } = require('./webpack.helpers');
 
 
@@ -102,4 +103,5 @@ module.exports = {
     isDevelopment ? new webpack.NamedModulesPlugin() : null,
     isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
   ].filter(Boolean),
+  stats: STATS
 };
