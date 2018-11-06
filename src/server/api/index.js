@@ -1,6 +1,8 @@
 import qs from 'qs';
 import superagent from 'superagent';
 
+import logger from 'utilities/logger';
+
 class API {
   static createEndpoint(command, queryArgs) {
     const query = qs.stringify({
@@ -27,6 +29,9 @@ class API {
     superagent.get(endpoint)
       .end((error, response) => {
         const { status: statusCode, body } = response;
+
+        const key = new RegExp(process.env.BART_API_KEY, 'g');
+        logger(`BARTAPI => ${statusCode} ${endpoint.replace(key, 'KEY')}`);
 
         if (error) {
           callback(error, null);
