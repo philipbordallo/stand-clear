@@ -10,7 +10,6 @@ function CurrentStation(props) {
   const {
     showContent,
     abbreviation,
-    name,
     date,
     time,
     arrivals,
@@ -43,9 +42,6 @@ function CurrentStation(props) {
   if (showContent) {
     return (
       <div>
-        <h1>
-          { name } Station
-        </h1>
         <p>
           { abbreviation } at { date } { time }
         </p>
@@ -59,7 +55,6 @@ function CurrentStation(props) {
 CurrentStation.propTypes = {
   showContent: PT.bool.isRequired,
   abbreviation: PT.string,
-  name: PT.string,
   date: PT.string,
   time: PT.string,
   arrivals: PT.shape({
@@ -69,7 +64,6 @@ CurrentStation.propTypes = {
 };
 CurrentStation.defaultProps = {
   abbreviation: '',
-  name: '',
   date: '',
   time: '',
   arrivals: {},

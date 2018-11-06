@@ -16,9 +16,11 @@ function Link(props) {
 }
 Link.propTypes = {
   to: PT.string.isRequired,
+  className: PT.string,
   onClick: PT.func,
 };
 Link.defaultProps = {
+  className: '',
   onClick: noop,
 };
 

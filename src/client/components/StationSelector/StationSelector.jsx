@@ -6,13 +6,16 @@ import SearchInput from 'components/SearchInput';
 
 import STATION_LIST from 'shared/meta/STATION_LIST';
 
+import Classes from './styles';
+
+
 function renderStations(station) {
   const { name, abbreviation } = station;
 
   const url = `/station/${abbreviation.toLowerCase()}`;
 
   return (
-    <Link key={ abbreviation } to={ url }>
+    <Link key={ abbreviation } to={ url } className={ Classes.link }>
       { name }
     </Link>
   );
@@ -23,7 +26,9 @@ function StationSelector() {
     <div>
       <Button>Find Closest Station</Button>
       <SearchInput />
-      { STATION_LIST.map(renderStations) }
+      <div className={ Classes.links }>
+        { STATION_LIST.map(renderStations) }
+      </div>
     </div>
   );
 }

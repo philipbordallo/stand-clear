@@ -6,6 +6,8 @@ import ReactRouterPT from 'propTypes/ReactRouterPT';
 import { useResource, useLogger } from 'hooks';
 
 import CurrentStation from 'components/CurrentStation';
+import Page from 'components/Page';
+
 
 function ArrivalsPage(props) {
   const { match } = props;
@@ -21,11 +23,15 @@ function ArrivalsPage(props) {
 
   useLogger({ currentStation, station, advisories });
 
+  const hasLoaded = !currentStation.isLoading && currentStation.hasLoaded;
+
   return (
-    <CurrentStation
-      showContent={ !currentStation.isLoading && currentStation.hasLoaded }
-      { ...currentStation.data }
-    />
+    <Page title={ hasLoaded ? currentStation.data.name : null }>
+      <CurrentStation
+        showContent={ hasLoaded }
+        { ...currentStation.data }
+      />
+    </Page>
   );
 }
 ArrivalsPage.propTypes = {

@@ -1,0 +1,34 @@
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+
+  @media (width > 650px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (width > 950px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.link {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: .5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-smoothing: antialiased;
+  transition-property: background-color, border, color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
