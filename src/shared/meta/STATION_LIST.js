@@ -1,6 +1,7 @@
 const STATION_LIST = [
   {
     name: '12th St. Oakland City Center',
+    shortName: '12th Street',
     abbreviation: '12TH',
     latitude: 37.803768,
     longitude: -122.271450,
@@ -12,6 +13,7 @@ const STATION_LIST = [
   },
   {
     name: '16th St. Mission',
+    shortName: '16th Street',
     abbreviation: '16TH',
     latitude: 37.765062,
     longitude: -122.419694,
@@ -23,6 +25,7 @@ const STATION_LIST = [
   },
   {
     name: '19th St. Oakland',
+    shortName: '19th Street',
     abbreviation: '19TH',
     latitude: 37.808350,
     longitude: -122.268602,
@@ -34,6 +37,7 @@ const STATION_LIST = [
   },
   {
     name: '24th St. Mission',
+    shortName: '24th Street',
     abbreviation: '24TH',
     latitude: 37.752470,
     longitude: -122.418143,
@@ -45,6 +49,7 @@ const STATION_LIST = [
   },
   {
     name: 'Antioch',
+    shortName: 'Antioch',
     abbreviation: 'ANTC',
     latitude: 37.995388,
     longitude: -121.780420,
@@ -56,6 +61,7 @@ const STATION_LIST = [
   },
   {
     name: 'Ashby',
+    shortName: 'Ashby',
     abbreviation: 'ASHB',
     latitude: 37.852803,
     longitude: -122.270062,
@@ -67,6 +73,7 @@ const STATION_LIST = [
   },
   {
     name: 'Balboa Park',
+    shortName: 'Balboa Park',
     abbreviation: 'BALB',
     latitude: 37.721585,
     longitude: -122.447506,
@@ -78,6 +85,7 @@ const STATION_LIST = [
   },
   {
     name: 'Bay Fair',
+    shortName: 'Bay Fair',
     abbreviation: 'BAYF',
     latitude: 37.696924,
     longitude: -122.126514,
@@ -89,6 +97,7 @@ const STATION_LIST = [
   },
   {
     name: 'Castro Valley',
+    shortName: 'Castro Valley',
     abbreviation: 'CAST',
     latitude: 37.690746,
     longitude: -122.075602,
@@ -100,6 +109,7 @@ const STATION_LIST = [
   },
   {
     name: 'Civic Center/UN Plaza',
+    shortName: 'Civic Center',
     abbreviation: 'CIVC',
     latitude: 37.779732,
     longitude: -122.414123,
@@ -111,6 +121,7 @@ const STATION_LIST = [
   },
   {
     name: 'Coliseum',
+    shortName: 'Coliseum',
     abbreviation: 'COLS',
     latitude: 37.753661,
     longitude: -122.196869,
@@ -122,6 +133,7 @@ const STATION_LIST = [
   },
   {
     name: 'Colma',
+    shortName: 'Colma',
     abbreviation: 'COLM',
     latitude: 37.684638,
     longitude: -122.466233,
@@ -133,6 +145,7 @@ const STATION_LIST = [
   },
   {
     name: 'Concord',
+    shortName: 'Concord',
     abbreviation: 'CONC',
     latitude: 37.973737,
     longitude: -122.029095,
@@ -144,6 +157,7 @@ const STATION_LIST = [
   },
   {
     name: 'Daly City',
+    shortName: 'Daly City',
     abbreviation: 'DALY',
     latitude: 37.706121,
     longitude: -122.469081,
@@ -155,6 +169,7 @@ const STATION_LIST = [
   },
   {
     name: 'Downtown Berkeley',
+    shortName: 'Downtown Berkeley',
     abbreviation: 'DBRK',
     latitude: 37.870104,
     longitude: -122.268133,
@@ -166,6 +181,7 @@ const STATION_LIST = [
   },
   {
     name: 'Dublin/Pleasanton',
+    shortName: 'Dublin/Pleasanton',
     abbreviation: 'DUBL',
     latitude: 37.701687,
     longitude: -121.899179,
@@ -177,6 +193,7 @@ const STATION_LIST = [
   },
   {
     name: 'El Cerrito del Norte',
+    shortName: 'El Cerrito del Norte',
     abbreviation: 'DELN',
     latitude: 37.925086,
     longitude: -122.316794,
@@ -188,6 +205,7 @@ const STATION_LIST = [
   },
   {
     name: 'El Cerrito Plaza',
+    shortName: 'El Cerrito Plaza',
     abbreviation: 'PLZA',
     latitude: 37.902632,
     longitude: -122.298904,
@@ -199,6 +217,7 @@ const STATION_LIST = [
   },
   {
     name: 'Embarcadero',
+    shortName: 'Embarcadero',
     abbreviation: 'EMBR',
     latitude: 37.792874,
     longitude: -122.397020,
@@ -210,6 +229,7 @@ const STATION_LIST = [
   },
   {
     name: 'Fremont',
+    shortName: 'Fremont',
     abbreviation: 'FRMT',
     latitude: 37.557465,
     longitude: -121.976608,
@@ -221,6 +241,7 @@ const STATION_LIST = [
   },
   {
     name: 'Fruitvale',
+    shortName: 'Fruitvale',
     abbreviation: 'FTVL',
     latitude: 37.774836,
     longitude: -122.224175,
@@ -232,6 +253,7 @@ const STATION_LIST = [
   },
   {
     name: 'Glen Park',
+    shortName: 'Glen Park',
     abbreviation: 'GLEN',
     latitude: 37.733064,
     longitude: -122.433817,
@@ -243,6 +265,7 @@ const STATION_LIST = [
   },
   {
     name: 'Hayward',
+    shortName: 'Hayward',
     abbreviation: 'HAYW',
     latitude: 37.669723,
     longitude: -122.087018,
@@ -254,6 +277,7 @@ const STATION_LIST = [
   },
   {
     name: 'Lafayette',
+    shortName: 'Lafayette',
     abbreviation: 'LAFY',
     latitude: 37.893176,
     longitude: -122.124630,
@@ -265,6 +289,7 @@ const STATION_LIST = [
   },
   {
     name: 'Lake Merritt',
+    shortName: 'Lake Merritt',
     abbreviation: 'LAKE',
     latitude: 37.797027,
     longitude: -122.265180,
@@ -276,6 +301,7 @@ const STATION_LIST = [
   },
   {
     name: 'MacArthur',
+    shortName: 'MacArthur',
     abbreviation: 'MCAR',
     latitude: 37.829065,
     longitude: -122.267040,
@@ -287,6 +313,7 @@ const STATION_LIST = [
   },
   {
     name: 'Millbrae',
+    shortName: 'Millbrae',
     abbreviation: 'MLBR',
     latitude: 37.600271,
     longitude: -122.386702,
@@ -298,6 +325,7 @@ const STATION_LIST = [
   },
   {
     name: 'Montgomery St.',
+    shortName: 'Montgomery',
     abbreviation: 'MONT',
     latitude: 37.789405,
     longitude: -122.401066,
@@ -309,6 +337,7 @@ const STATION_LIST = [
   },
   {
     name: 'North Berkeley',
+    shortName: 'North Berkeley',
     abbreviation: 'NBRK',
     latitude: 37.873967,
     longitude: -122.283440,
@@ -320,6 +349,7 @@ const STATION_LIST = [
   },
   {
     name: 'North Concord/Martinez',
+    shortName: 'North Concord',
     abbreviation: 'NCON',
     latitude: 38.003193,
     longitude: -122.024653,
@@ -331,6 +361,7 @@ const STATION_LIST = [
   },
   {
     name: 'Oakland International Airport',
+    shortName: 'Oakland Airport',
     abbreviation: 'OAKL',
     latitude: 37.713238,
     longitude: -122.212191,
@@ -342,6 +373,7 @@ const STATION_LIST = [
   },
   {
     name: 'Orinda',
+    shortName: 'Orinda',
     abbreviation: 'ORIN',
     latitude: 37.878361,
     longitude: -122.183791,
@@ -353,6 +385,7 @@ const STATION_LIST = [
   },
   {
     name: 'Pittsburg/Bay Point',
+    shortName: 'Pittsburg/Bay Point',
     abbreviation: 'PITT',
     latitude: 38.018914,
     longitude: -121.945154,
@@ -364,6 +397,7 @@ const STATION_LIST = [
   },
   {
     name: 'Pittsburg Center',
+    shortName: 'Pittsburg Center',
     abbreviation: 'PCTR',
     latitude: 38.016941,
     longitude: -121.889457,
@@ -375,6 +409,7 @@ const STATION_LIST = [
   },
   {
     name: 'Pleasant Hill/Contra Costa Centre',
+    shortName: 'Pleasant Hill',
     abbreviation: 'PHIL',
     latitude: 37.928468,
     longitude: -122.056012,
@@ -386,6 +421,7 @@ const STATION_LIST = [
   },
   {
     name: 'Powell St.',
+    shortName: 'Powell',
     abbreviation: 'POWL',
     latitude: 37.784471,
     longitude: -122.407974,
@@ -397,6 +433,7 @@ const STATION_LIST = [
   },
   {
     name: 'Richmond',
+    shortName: 'Richmond',
     abbreviation: 'RICH',
     latitude: 37.936853,
     longitude: -122.353099,
@@ -408,6 +445,7 @@ const STATION_LIST = [
   },
   {
     name: 'Rockridge',
+    shortName: 'Rockridge',
     abbreviation: 'ROCK',
     latitude: 37.844702,
     longitude: -122.251371,
@@ -419,6 +457,7 @@ const STATION_LIST = [
   },
   {
     name: 'San Bruno',
+    shortName: 'San Bruno',
     abbreviation: 'SBRN',
     latitude: 37.637761,
     longitude: -122.416287,
@@ -430,6 +469,7 @@ const STATION_LIST = [
   },
   {
     name: 'San Francisco International Airport',
+    shortName: 'SFO',
     abbreviation: 'SFIA',
     latitude: 37.615966,
     longitude: -122.392409,
@@ -441,6 +481,7 @@ const STATION_LIST = [
   },
   {
     name: 'San Leandro',
+    shortName: 'San Leandro',
     abbreviation: 'SANL',
     latitude: 37.721947,
     longitude: -122.160844,
@@ -452,6 +493,7 @@ const STATION_LIST = [
   },
   {
     name: 'South Hayward',
+    shortName: 'South Hayward',
     abbreviation: 'SHAY',
     latitude: 37.634375,
     longitude: -122.057189,
@@ -463,6 +505,7 @@ const STATION_LIST = [
   },
   {
     name: 'South San Francisco',
+    shortName: 'South San Francisco',
     abbreviation: 'SSAN',
     latitude: 37.664245,
     longitude: -122.443960,
@@ -474,6 +517,7 @@ const STATION_LIST = [
   },
   {
     name: 'Union City',
+    shortName: 'Union City',
     abbreviation: 'UCTY',
     latitude: 37.590630,
     longitude: -122.017388,
@@ -485,6 +529,7 @@ const STATION_LIST = [
   },
   {
     name: 'Walnut Creek',
+    shortName: 'Walnut Creek',
     abbreviation: 'WCRK',
     latitude: 37.905522,
     longitude: -122.067527,
@@ -496,6 +541,7 @@ const STATION_LIST = [
   },
   {
     name: 'Warm Springs/South Fremont',
+    shortName: 'Warm Springs',
     abbreviation: 'WARM',
     latitude: 37.502171,
     longitude: -121.939313,
@@ -507,6 +553,7 @@ const STATION_LIST = [
   },
   {
     name: 'West Dublin/Pleasanton',
+    shortName: 'West Dublin',
     abbreviation: 'WDUB',
     latitude: 37.699756,
     longitude: -121.928240,
@@ -518,6 +565,7 @@ const STATION_LIST = [
   },
   {
     name: 'West Oakland',
+    shortName: 'West Oakland',
     abbreviation: 'WOAK',
     latitude: 37.804872,
     longitude: -122.295140,

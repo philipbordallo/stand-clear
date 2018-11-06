@@ -10,13 +10,13 @@ import Classes from './styles';
 
 
 function renderStations(station) {
-  const { name, abbreviation } = station;
+  const { shortName, name, abbreviation } = station;
 
   const url = `/station/${abbreviation.toLowerCase()}`;
 
   return (
-    <Link key={ abbreviation } to={ url } className={ Classes.link }>
-      { name }
+    <Link key={ abbreviation } to={ url } className={ Classes.link } title={ name }>
+      { shortName }
     </Link>
   );
 }
