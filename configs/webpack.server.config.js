@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const {
   LOADER,
@@ -37,6 +38,9 @@ module.exports = {
     rules: [
       RULES.js,
     ]
+  },
+  optimization: {
+    minimizer: [new TerserWebpackPlugin()]
   },
   resolve: {
     alias: {

@@ -1,9 +1,9 @@
 .root {
   max-width: 1250px;
-  margin: auto;
+  margin: 0 auto 4rem;
   padding: 0 15px;
 }
 
 .title {
-  composes: title from 'assets/default/styles';
+  composes: title from 'css/default/styles';
 }

@@ -7,8 +7,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ArrivalsPage from 'pages/ArrivalsPage';
 import StationsPage from 'pages/StationsPage';
 
-import 'assets/base/styles';
-
 // Make sure Hot Reload works with function components
 setConfig({ pureSFC: true });
 

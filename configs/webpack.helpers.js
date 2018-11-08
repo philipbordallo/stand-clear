@@ -42,11 +42,14 @@ const LOADER = {
 
 const DEFINE_ENV = {
   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-  'process.env.BART_API_KEY': JSON.stringify(process.env.BART_API_KEY),
 };
 
 const STATS = {
-  modules: false
+  assets: true,
+  children: false,
+  chunks: false,
+  modules: false,
+  timings: true
 };
 
 module.exports = {

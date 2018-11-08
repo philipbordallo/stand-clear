@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const {
   LOADER,
@@ -27,7 +30,7 @@ const RULES = {
   css: {
     test: /\.css$/,
     use: [
-      LOADER.style,
+      isDevelopment ? LOADER.style : MiniCSSExtractPlugin.loader,
       LOADER.css,
       LOADER.postcss
     ]
@@ -54,13 +57,7 @@ const DEV_SERVER = {
       pathRewrite: { '^/.netlify/functions': '' },
     },
   },
-  stats: {
-    assets: true,
-    children: false,
-    chunks: false,
-    modules: false,
-    timings: true
-  }
+  stats: STATS,
 };
 
 module.exports = {
@@ -71,7 +68,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(DIST_PATH, 'client'),
-    filename: '[name].[hash].bundle.js',
+    filename: isProduction ? '[name].[hash].bundle.js' : '[name].bundle.js',
     publicPath: `/`
   },
   devServer: isDevelopment ? DEV_SERVER : undefined,
@@ -100,8 +97,28 @@ module.exports = {
       inject: false,
       minify: false
     }),
+    isProduction ? new MiniCSSExtractPlugin({
+      filename: '[name].[contenthash].css'
+    }) : null,
     isDevelopment ? new webpack.NamedModulesPlugin() : null,
     isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
   ].filter(Boolean),
-  stats: STATS
+  stats: STATS,
+  optimization: {
+    minimizer: [
+      new TerserWebpackPlugin({
+        sourceMap: true,
+      }),
+      new OptimizeCSSAssetsPlugin()
+    ],
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          name: 'vendors',
+          test: /[\\/]node_modules[\\/].+(?<!css)$/,
+          chunks: 'all'
+        },
+      },
+    },
+  },
 };

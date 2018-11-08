@@ -13,6 +13,6 @@ module.exports = {
         'system-ui-font-family': true
       },
     },
-    'postcss-font-smoothing': {}
+    'postcss-font-smoothing': {},
   },
 };
