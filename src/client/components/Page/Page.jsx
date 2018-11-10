@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import ErrorBoundary from 'components/ErrorBoundary';
 import Navigation from 'components/Navigation';
 
 import Classes from './styles';
@@ -10,13 +11,15 @@ function Page(props) {
   const { children, title } = props;
 
   return (
-    <main className={ Classes.root }>
-      <div className={ Classes.content }>
-        <h1 className={ Classes.title }>{ title }</h1>
-        { children }
-      </div>
-      <Navigation />
-    </main>
+    <ErrorBoundary>
+      <main className={ Classes.root }>
+        <div className={ Classes.content }>
+          <h1 className={ Classes.title }>{ title }</h1>
+          { children }
+        </div>
+        <Navigation />
+      </main>
+    </ErrorBoundary>
   );
 }
 Page.propTypes = {

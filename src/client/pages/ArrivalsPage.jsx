@@ -6,6 +6,7 @@ import ReactRouterPT from 'propTypes/ReactRouterPT';
 import { useResource, useLogger } from 'hooks';
 
 import CurrentStation from 'components/CurrentStation';
+import ErrorPage from 'pages/ErrorPage';
 import Page from 'components/Page';
 
 
@@ -24,6 +25,15 @@ function ArrivalsPage(props) {
   useLogger({ currentStation, station, advisories });
 
   const hasLoaded = !currentStation.isLoading && currentStation.hasLoaded;
+
+  if (currentStation.hasError) {
+    return (
+      <ErrorPage
+        title={ currentStation.error.name }
+        message={ currentStation.error.message }
+      />
+    );
+  }
 
   return (
     <Page title={ hasLoaded ? currentStation.data.name : '' }>

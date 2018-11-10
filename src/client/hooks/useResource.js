@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   isLoading: false,
   hasLoaded: false,
   data: null,
+  error: null,
 };
 
 const ActionTypes = {
@@ -19,13 +20,16 @@ function resourceReducer(state, action) {
       return {
         isLoading: true,
         hasLoaded: false,
+        hasError: false,
         data: INITIAL_STATE.data,
+        error: INITIAL_STATE.error,
       };
 
     case ActionTypes.FETCH_RESOURCE_SUCCESS:
       return {
         isLoading: false,
         hasLoaded: true,
+        hasError: false,
         data: action.data,
       };
 
@@ -33,7 +37,8 @@ function resourceReducer(state, action) {
       return {
         isLoading: false,
         hasLoaded: true,
-        data: action.error,
+        hasError: true,
+        error: action.error,
       };
 
     default:
@@ -64,7 +69,17 @@ function useResource(options, trigger = []) {
     resourceStart();
 
     fetch(url, otherOptions)
-      .then(response => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        // eslint-disable-next-line prefer-promise-reject-errors
+        return Promise.reject({
+          name: response.status,
+          message: response.statusText,
+        });
+      })
       .then(
         data => resourceSuccess(data),
         error => resourceFailure(error),
