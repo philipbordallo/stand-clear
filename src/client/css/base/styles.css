@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700');
 
+html, body {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   font-family: 'IBM Plex Mono', system-ui;
   margin: 0;
+}
+
+:global(#application) {
+  height: 100%;
+}
+
+:global(#spritemap) {
+  visibility: hidden;
+  overflow: hidden;
+  height: 0;
+  width: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {

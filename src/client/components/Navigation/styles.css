@@ -1,0 +1,26 @@
+.root {
+  position: sticky;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,.95);
+  margin: 0 auto;
+  padding-top: 6px;
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-around;
+
+  @supports (padding: max(0px)) {
+    & {
+      padding-bottom: max(12px, env(safe-area-inset-bottom))
+    }
+  }
+
+  @supports (backdrop-filter: blur(0)) {
+    & {
+      background-color: rgba(255,255,255,.5);
+      backdrop-filter: blur(12px);
+    }
+  }
+}

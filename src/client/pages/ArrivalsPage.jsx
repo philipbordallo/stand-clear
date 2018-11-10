@@ -26,7 +26,7 @@ function ArrivalsPage(props) {
   const hasLoaded = !currentStation.isLoading && currentStation.hasLoaded;
 
   return (
-    <Page title={ hasLoaded ? currentStation.data.name : null }>
+    <Page title={ hasLoaded ? currentStation.data.name : '' }>
       <CurrentStation
         showContent={ hasLoaded }
         { ...currentStation.data }

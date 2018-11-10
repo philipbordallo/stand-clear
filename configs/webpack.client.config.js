@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+
+const SVGSpriteMapPlugin = require('svg-spritemap-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -47,7 +49,7 @@ const DEV_SERVER = {
   compress: true,
   contentBase: DIST_PATH,
   historyApiFallback: true,
-  host: 'localhost',
+  host: '0.0.0.0',
   hot: true,
   inline: true,
   port: 3000,
@@ -68,7 +70,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(DIST_PATH, 'client'),
-    filename: isProduction ? '[name].[hash].bundle.js' : '[name].bundle.js',
+    filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
     publicPath: `/`
   },
   devServer: isDevelopment ? DEV_SERVER : undefined,
@@ -90,7 +92,14 @@ module.exports = {
     new webpack.DefinePlugin(DEFINE_ENV),
     new webpack.SourceMapDevToolPlugin({
       test: /\.(js|jsx)$/,
+      exclude: /^spritemap/,
       filename: '[file].map'
+    }),
+    new SVGSpriteMapPlugin({
+      src: path.resolve(CLIENT_PATH, 'assets', 'icons', '**/*.svg'),
+      filename: isProduction ? 'spritemap.[contenthash].svg' : 'spritemap.svg',
+      prefix: 'icon-',
+      generateUse: isDevelopment,
     }),
     new HTMLWebpackPlugin({
       template: path.resolve(CLIENT_PATH, 'entry.html.js'),

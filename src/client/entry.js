@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import 'css/styles';
+import 'utilities/injectSpritemap';
 
 import App from './App';
 
