@@ -17,10 +17,10 @@ function Icon(props) {
 }
 Icon.propTypes = {
   name: PT.string.isRequired,
-  size: PT.number,
+  size: PT.string,
 };
 Icon.defaultProps = {
-  size: 24,
+  size: '24',
 };
 
 export default Icon;

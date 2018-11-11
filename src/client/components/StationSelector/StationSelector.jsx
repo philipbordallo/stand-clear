@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import Button from 'components/Button';
 import Link from 'components/Link';
@@ -21,10 +22,16 @@ function renderStations(station) {
   );
 }
 
-function StationSelector() {
+function StationSelector(props) {
+  const { getGeolocation, geolocation } = props; // eslint-disable-line no-unused-vars
+
+  const handleClick = () => {
+    getGeolocation();
+  };
+
   return (
     <div>
-      <Button>Find Closest Station</Button>
+      <Button onClick={ handleClick }>Find Closest Station</Button>
       <SearchInput />
       <div className={ Classes.links }>
         { STATION_LIST.map(renderStations) }
@@ -32,5 +39,21 @@ function StationSelector() {
     </div>
   );
 }
+StationSelector.propTypes = {
+  getGeolocation: PT.func.isRequired,
+  geolocation: PT.shape({
+    isLoading: PT.bool.isRequired,
+    hasLoaded: PT.bool.isRequired,
+    data: PT.shape({
+      accuracy: PT.number.isRequired,
+      latitude: PT.number.isRequired,
+      longitude: PT.number.isRequired,
+    }),
+    error: PT.string,
+  }),
+};
+StationSelector.defaultProps = {
+  geolocation: {},
+};
 
 export default StationSelector;
