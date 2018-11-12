@@ -1,20 +1,18 @@
 import React from 'react';
 
-import { useGeolocation, useLogger } from 'hooks';
+import { useClosestStation } from 'hooks';
 
 import Page from 'components/Page';
 import StationSelector from 'components/StationSelector';
 
 function StationsPage() {
-  const [geolocation, getGeolocation] = useGeolocation();
-
-  useLogger({ ...geolocation });
+  const [closestStation, getClosestStation] = useClosestStation();
 
   return (
     <Page title="Stations">
       <StationSelector
-        getGeolocation={ getGeolocation }
-        geolocation={ geolocation }
+        getClosestStation={ getClosestStation }
+        closestStation={ closestStation }
       />
     </Page>
   );

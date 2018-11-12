@@ -29,8 +29,10 @@ const history = PT.shape({
   replace: PT.func.isRequired,
 });
 
-export default {
+const ReactRouterPT = {
   match,
   location,
   history,
 };
+
+export default ReactRouterPT;

@@ -24,3 +24,12 @@ body {
 h1, h2, h3, h4, h5, h6, p {
   margin: 0 0 1rem 0;
 }
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}

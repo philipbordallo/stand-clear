@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PT from 'prop-types';
+
+import ReactRouterPT from 'propTypes/ReactRouterPT';
+
+import { withRouter } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Link from 'components/Link';
@@ -23,10 +27,16 @@ function renderStations(station) {
 }
 
 function StationSelector(props) {
-  const { getGeolocation, geolocation } = props; // eslint-disable-line no-unused-vars
+  const { getClosestStation, closestStation, history } = props;
+
+  useEffect(() => {
+    if (closestStation) {
+      history.push(`/station/${closestStation.toLowerCase()}`);
+    }
+  }, [closestStation]);
 
   const handleClick = () => {
-    getGeolocation();
+    getClosestStation();
   };
 
   return (
@@ -40,20 +50,12 @@ function StationSelector(props) {
   );
 }
 StationSelector.propTypes = {
-  getGeolocation: PT.func.isRequired,
-  geolocation: PT.shape({
-    isLoading: PT.bool.isRequired,
-    hasLoaded: PT.bool.isRequired,
-    data: PT.shape({
-      accuracy: PT.number.isRequired,
-      latitude: PT.number.isRequired,
-      longitude: PT.number.isRequired,
-    }),
-    error: PT.string,
-  }),
+  getClosestStation: PT.func.isRequired,
+  closestStation: PT.string,
+  history: ReactRouterPT.history.isRequired,
 };
 StationSelector.defaultProps = {
-  geolocation: {},
+  closestStation: '',
 };
 
-export default StationSelector;
+export default withRouter(StationSelector);
