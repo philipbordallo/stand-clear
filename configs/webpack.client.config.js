@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 
 const SVGSpriteMapPlugin = require('svg-spritemap-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -44,15 +45,25 @@ const RULES = {
     ]
   }
 };
+const PORT = process.env.PORT;
 
 const DEV_SERVER = {
+  allowedHosts: process.env.ALLOWED_HOSTS.split(','),
+  before: function(app, server) {
+    console.log(server.allowedHosts.map(host => `~ https://${host}:${PORT}`).join('\n'), '\n');
+  },
   compress: true,
   contentBase: DIST_PATH,
   historyApiFallback: true,
   host: '0.0.0.0',
   hot: true,
+  https: {
+    key: fs.readFileSync(process.env.SSL_KEY),
+    cert: fs.readFileSync(process.env.SSL_CERT),
+    ca: fs.readFileSync(process.env.SSL_CA),
+  },
   inline: true,
-  port: 3000,
+  port: PORT,
   proxy: {
     '/.netlify/functions/': {
       target: 'http://localhost:9000',
