@@ -22,4 +22,5 @@
 
 .title {
   composes: title from 'css/default/styles';
+  margin-bottom: 0;
 }

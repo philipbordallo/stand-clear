@@ -5,6 +5,7 @@ import CurrentArrival from 'components/CurrentArrival';
 
 import { DirectionPT } from './propTypes';
 
+import Classes from './styles';
 
 function CurrentStation(props) {
   const {
@@ -13,6 +14,7 @@ function CurrentStation(props) {
     date,
     time,
     arrivals,
+    name,
   } = props;
 
   const hasArrivals = Object.keys(arrivals).length > 0;
@@ -31,8 +33,10 @@ function CurrentStation(props) {
 
     return (
       <div key={ direction }>
-        <h2>
-          { currentDirection.name } – <span>Platforms { directionPlatforms }</span>
+        <h2 className={ Classes.title }>
+          { currentDirection.name }
+          <span className={ Classes.subtitle }>Platforms { directionPlatforms }</span>
+          <span className={ Classes.abbreviation }>{ abbreviation }</span>
         </h2>
         { currentDirection.list.map(renderArrivalsItem) }
       </div>
@@ -42,10 +46,11 @@ function CurrentStation(props) {
   if (showContent) {
     return (
       <div>
-        <p>
-          { abbreviation } at { time } on { date }
-        </p>
         { hasArrivals ? Object.keys(arrivals).map(renderArrivals) : null }
+
+        <p className={ Classes.information }>
+          Information accurate as of { time } on { date } for { name } Station.
+        </p>
       </div>
     );
   }
@@ -56,6 +61,7 @@ CurrentStation.propTypes = {
   showContent: PT.bool.isRequired,
   abbreviation: PT.string,
   date: PT.string,
+  name: PT.string,
   time: PT.string,
   arrivals: PT.shape({
     northBound: DirectionPT,
@@ -65,6 +71,7 @@ CurrentStation.propTypes = {
 CurrentStation.defaultProps = {
   abbreviation: '',
   date: '',
+  name: '',
   time: '',
   arrivals: {},
 };

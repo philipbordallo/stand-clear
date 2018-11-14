@@ -1,0 +1,32 @@
+.title {
+  composes: transparentBackground from 'css/default/styles';
+  display: flex;
+  align-items: baseline;
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 0;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-weight: normal;
+  font-size: 1rem;
+  margin-left: .5rem;
+  text-transform: uppercase;
+}
+
+.abbreviation {
+  background-color: whitesmoke;
+  font-size: 1.25rem;
+  font-weight: normal;
+  padding: 0 .25em;
+  margin-left: auto;
+}
+
+.information {
+  margin-top: 1.5rem;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: .5rem 0;
+  font-size: .8125rem;
+}
