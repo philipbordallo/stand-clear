@@ -1,4 +1,4 @@
-.arrival {
+.root {
   display: flex;
   margin-bottom: 0.75rem;
   border: 1px solid lightgray;
@@ -6,18 +6,18 @@
   border-radius: 1rem;
 }
 
-.arrivalIcon {
+.icon {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: .5px solid black;
 }
 
-.arrivalInformation {
+.information {
   margin-left: .5rem;
 }
 
-.arrivalTitle {
+.title {
   font-weight: normal;
   font-size: 1.25rem;
   margin: 0 0 .25em 0;

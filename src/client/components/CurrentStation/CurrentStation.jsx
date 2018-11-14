@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import CurrentStationArrival from './CurrentStationArrival';
+import CurrentArrival from 'components/CurrentArrival';
 
 import { DirectionPT } from './propTypes';
 
@@ -20,7 +20,7 @@ function CurrentStation(props) {
   function renderArrivalsItem(arrival) {
     const { arrivalID } = arrival;
     return (
-      <CurrentStationArrival key={ arrivalID } { ...arrival } />
+      <CurrentArrival key={ arrivalID } { ...arrival } />
     );
   }
 

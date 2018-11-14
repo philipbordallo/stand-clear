@@ -45,12 +45,11 @@ const RULES = {
     ]
   }
 };
-const PORT = isDevelopment && process.env.PORT;
 
 const DEV_SERVER = isDevelopment ? {
   allowedHosts: process.env.ALLOWED_HOSTS.split(','),
   before: function(app, server) {
-    console.log(server.allowedHosts.map(host => `~ https://${host}:${PORT}`).join('\n'), '\n');
+    console.log(server.allowedHosts.map(host => `~ https://${host}:${process.env.PORT}`).join('\n'), '\n');
   },
   compress: true,
   contentBase: DIST_PATH,
@@ -63,7 +62,7 @@ const DEV_SERVER = isDevelopment ? {
     ca: fs.readFileSync(process.env.SSL_CA),
   },
   inline: true,
-  port: PORT,
+  port: process.env.PORT,
   proxy: {
     '/.netlify/functions/': {
       target: 'http://localhost:9000',
