@@ -1,0 +1,33 @@
+.arrival {
+  display: flex;
+  margin-bottom: 0.75rem;
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.arrivalIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: .5px solid black;
+}
+
+.arrivalInformation {
+  margin-left: .5rem;
+}
+
+.arrivalTitle {
+  font-weight: normal;
+  font-size: 1.25rem;
+  margin: 0 0 .25em 0;
+  line-height: 1;
+}
+
+.delayed {
+  text-transform: uppercase;
+  font-size: .8125rem;
+  background-color: black;
+  color: white;
+  padding: 0 .5em;
+}

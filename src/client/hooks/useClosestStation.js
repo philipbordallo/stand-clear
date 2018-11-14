@@ -29,7 +29,12 @@ function useClosestStation() {
     }
   }, [geolocation.data]);
 
-  return [closestStation, getGeolocation];
+  const data = {
+    ...geolocation,
+    abbreviation: closestStation,
+  };
+
+  return [data, getGeolocation];
 }
 
 export default useClosestStation;

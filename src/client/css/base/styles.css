@@ -8,17 +8,13 @@ html, body {
 body {
   font-family: 'IBM Plex Mono', system-ui;
   margin: 0;
+  line-height: 1.5;
 }
 
-:global(#application) {
-  height: 100%;
-}
-
-:global(#spritemap) {
-  visibility: hidden;
-  overflow: hidden;
-  height: 0;
-  width: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -32,4 +28,15 @@ button {
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+:global(#application) {
+  height: 100%;
+}
+
+:global(#spritemap) {
+  visibility: hidden;
+  overflow: hidden;
+  height: 0;
+  width: 0;
 }

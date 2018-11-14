@@ -43,7 +43,7 @@ function CurrentStation(props) {
     return (
       <div>
         <p>
-          { abbreviation } at { date } { time }
+          { abbreviation } at { time } on { date }
         </p>
         { hasArrivals ? Object.keys(arrivals).map(renderArrivals) : null }
       </div>

@@ -30,10 +30,11 @@ function StationSelector(props) {
   const { getClosestStation, closestStation, history } = props;
 
   useEffect(() => {
-    if (closestStation) {
-      history.push(`/station/${closestStation.toLowerCase()}`);
+    if (closestStation.abbreviation) {
+      const station = closestStation.abbreviation.toLowerCase();
+      history.push(`/station/${station}`);
     }
-  }, [closestStation]);
+  }, [closestStation.abbreviation]);
 
   const handleClick = () => {
     getClosestStation();
@@ -51,11 +52,18 @@ function StationSelector(props) {
 }
 StationSelector.propTypes = {
   getClosestStation: PT.func.isRequired,
-  closestStation: PT.string,
+  closestStation: PT.shape({
+    isLoading: PT.bool.isRequired,
+    hasLoaded: PT.bool.isRequired,
+    data: PT.shape({
+      accuracy: PT.number.isRequired,
+      latitude: PT.number.isRequired,
+      longitude: PT.number.isRequired,
+    }),
+    error: PT.string,
+    abbreviation: PT.string,
+  }).isRequired,
   history: ReactRouterPT.history.isRequired,
-};
-StationSelector.defaultProps = {
-  closestStation: '',
 };
 
 export default withRouter(StationSelector);
