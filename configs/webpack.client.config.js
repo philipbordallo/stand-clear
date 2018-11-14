@@ -45,9 +45,9 @@ const RULES = {
     ]
   }
 };
-const PORT = process.env.PORT;
+const PORT = isDevelopment && process.env.PORT;
 
-const DEV_SERVER = {
+const DEV_SERVER = isDevelopment ? {
   allowedHosts: process.env.ALLOWED_HOSTS.split(','),
   before: function(app, server) {
     console.log(server.allowedHosts.map(host => `~ https://${host}:${PORT}`).join('\n'), '\n');
@@ -71,7 +71,7 @@ const DEV_SERVER = {
     },
   },
   stats: STATS,
-};
+} : undefined;
 
 module.exports = {
   name: 'client',
@@ -84,7 +84,7 @@ module.exports = {
     filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
     publicPath: `/`
   },
-  devServer: isDevelopment ? DEV_SERVER : undefined,
+  devServer: DEV_SERVER,
   module: {
     rules: [
       RULES.jsx,
