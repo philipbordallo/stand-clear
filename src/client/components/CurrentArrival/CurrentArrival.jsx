@@ -22,9 +22,14 @@ function CurrentArrival(props) {
     backgroundColor: hexColor,
   };
 
+  const isLeavingNow = minutes === COPY.leaving;
+
   let leaving = `${minutes} minutes`;
   if (minutes === '1') leaving = `${minutes} minute`;
-  if (minutes === COPY.leaving) leaving = 'Leaving now';
+  if (isLeavingNow) leaving = 'Leaving now';
+
+  let iconClassNames = Classes.icon;
+  if (isLeavingNow) iconClassNames += ` ${Classes.iconLeaving}`;
 
   const isDelayedContent = delay > 0
     ? (
@@ -42,7 +47,7 @@ function CurrentArrival(props) {
 
   return (
     <div key={ arrivalID } className={ Classes.root }>
-      <div className={ Classes.icon } style={ iconStyle } title={ color } />
+      <div className={ iconClassNames } style={ iconStyle } title={ color } />
       <div className={ Classes.information }>
         <h3 className={ Classes.title }>
           { name } { isLimitedName }

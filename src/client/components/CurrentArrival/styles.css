@@ -13,6 +13,31 @@
   border: 1px solid black;
 }
 
+.iconLeaving {
+  animation-name: pulse;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.47, 0, 0.75, 0.72);
+
+  @media screen and (prefers-reduced-motion) {
+    animation: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .information {
   margin-left: .5rem;
 }
