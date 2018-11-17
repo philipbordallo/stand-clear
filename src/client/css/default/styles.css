@@ -5,7 +5,6 @@
 }
 
 .transparentBackground {
-  background-color: white;
   background-color: rgba(255,255,255,.95);
 
   @supports (backdrop-filter: blur(0)) {
@@ -13,5 +12,9 @@
       background-color: rgba(255,255,255,.5);
       backdrop-filter: blur(12px);
     }
+  }
+
+  @media screen and (prefers-reduced-transparency ) {
+    background-color: white;
   }
 }

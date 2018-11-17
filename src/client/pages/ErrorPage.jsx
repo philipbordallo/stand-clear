@@ -6,13 +6,16 @@ import Page from 'components/Page';
 function ErrorPage(props) {
   const { title, message } = props;
   return (
-    <Page title={ title }>
+    <Page title={ String(title) }>
       <p>{ message }</p>
     </Page>
   );
 }
 ErrorPage.propTypes = {
-  title: PT.string,
+  title: PT.oneOfType([
+    PT.string,
+    PT.number,
+  ]),
   message: PT.string,
 };
 ErrorPage.defaultProps = {

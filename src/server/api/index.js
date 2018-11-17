@@ -28,26 +28,38 @@ class API {
   static request(endpoint, callback, parser) {
     superagent.get(endpoint)
       .end((error, response) => {
-        const { status: statusCode, body } = response;
-
         const key = new RegExp(process.env.BART_API_KEY, 'g');
-        logger(`BARTAPI => ${statusCode} ${endpoint.replace(key, 'KEY')}`);
 
         if (error) {
-          callback(error, null);
-        }
-
-        if (statusCode === 200) {
-          const data = parser ? parser(body) : body;
+          logger(`BARTAPI => 500 ${endpoint.replace(key, 'KEY')}`);
 
           callback(null, {
-            statusCode,
+            statusCode: 500,
             headers: API.defaultHeaders,
-            body: API.serializer(data),
+            body: API.serializer({ error: 'Cannot connect to BART API' }),
           });
         }
         else {
-          callback(statusCode, null);
+          const { status: statusCode, statusText, body } = response;
+
+          logger(`BARTAPI => ${statusCode} ${endpoint.replace(key, 'KEY')}`);
+
+          if (statusCode === 200) {
+            const data = parser ? parser(body) : body;
+
+            callback(null, {
+              statusCode,
+              headers: API.defaultHeaders,
+              body: API.serializer(data),
+            });
+          }
+          else {
+            callback(null, {
+              statusCode,
+              headers: API.defaultHeaders,
+              body: API.serializer({ error: statusText }),
+            });
+          }
         }
       });
   }
