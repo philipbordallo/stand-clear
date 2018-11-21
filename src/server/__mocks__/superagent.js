@@ -4,12 +4,11 @@ function getArgs(endpoint) {
   if (endpoint === 'http://example.com') {
     return [null, { status: 200 }];
   }
-  if (endpoint === 'http://example.com/500') {
-    return ['error', { status: 500 }];
-  }
   if (endpoint === 'http://example.com/404') {
     return [null, { status: 404 }];
   }
+
+  return ['error', { status: 500 }];
 }
 
 var Request = {

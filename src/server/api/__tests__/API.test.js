@@ -5,11 +5,6 @@ function mockParser(data) {
 }
 
 describe('API should', () => {
-  beforeAll(() => {
-    delete process.env.BART_API_KEY;
-    process.env.BART_API_KEY = 'KEY';
-  });
-
   test('Returns a correct API endpoint string', () => {
     const results = API.createEndpoint('bsa');
     const expectations = 'https://api.bart.gov/api/bsa.aspx?cmd=bsa&key=KEY&json=y';

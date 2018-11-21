@@ -23,5 +23,8 @@ module.exports = {
     '<rootDir>/src/client/',
     '<rootDir>/src/server/',
     '<rootDir>/src/',
+  ],
+  setupFiles: [
+    '<rootDir>/configs/jest.setup.js',
   ]
 };

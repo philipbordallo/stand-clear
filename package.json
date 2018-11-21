@@ -15,12 +15,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run client",
-    "build": "npm run cleanup && npm run build:client && npm run build:server",
+    "build": "npm run cleanup && npm run test:ci && npm run build:client && npm run build:server",
     "build:client": "NODE_ENV=production webpack --config ./configs/webpack.client.config.js",
     "build:server": "NODE_ENV=production netlify-lambda build --config ./configs/webpack.server.config.js ./src/server/functions/",
     "client": "NODE_ENV=development webpack-dev-server --config ./configs/webpack.client.config.js",
     "server": "NODE_ENV=development netlify-lambda serve --config ./configs/webpack.server.config.js ./src/server/functions/",
     "test": "NODE_ENV=test jest --config ./configs/jest.config.js",
+    "test:ci": "npm run test -- --ci",
     "lint": "eslint --config ./configs/eslint.config.js ./src/",
     "cleanup": "rimraf dist"
   },
