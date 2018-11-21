@@ -8,12 +8,14 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/dist/'
+    '<rootDir>/dist/',
+    '<rootDir>/configs/',
   ],
   collectCoverageFrom: [
     '**/*.{js,jsx}',
     '!**/node_modules/**',
-    '!**/dist/**',
+    '!/dist/**',
+    '!/configs/**',
   ],
   moduleFileExtensions: ['js', 'json', 'jsx', 'css'],
   moduleNameMapper: {

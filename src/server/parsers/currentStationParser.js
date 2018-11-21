@@ -5,7 +5,10 @@ function currentStationParser(data) {
   if (data && data.root && data.root.station.length > 0) {
     const currentStation = data.root.station[0];
 
-    const list = arrivalsListParser(currentStation.etd);
+    const list = currentStation.etd
+      ? arrivalsListParser(currentStation.etd)
+      : [];
+
     const arrivals = directionsParser(list);
 
     return {
