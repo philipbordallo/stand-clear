@@ -10,12 +10,15 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const {
   LOADER,
-  CLIENT_PATH,
-  DIST_PATH,
-  ROOT_PATH,
   DEFINE_ENV,
   STATS,
 } = require('./webpack.helpers');
+
+const {
+  CLIENT_PATH,
+  DIST_PATH,
+  ROOT_PATH,
+} = require('./paths');
 
 
 const isDevelopment = process.env.NODE_ENV === 'development';

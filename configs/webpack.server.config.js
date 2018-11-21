@@ -3,10 +3,13 @@ const path = require('path');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const {
-  LOADER,
   SERVER_PATH,
   DIST_PATH,
   ROOT_PATH,
+} = require('./paths');
+
+const {
+  LOADER,
   DEFINE_ENV,
   STATS,
 } = require('./webpack.helpers');
