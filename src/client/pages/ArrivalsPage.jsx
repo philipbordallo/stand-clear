@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PT from 'prop-types';
 
 import ReactRouterPT from 'propTypes/ReactRouterPT';
 
-import { useResource, useLogger } from 'hooks';
+import { useResource, useLogger, useRedux } from 'hooks';
 
 import CurrentStation from 'components/CurrentStation';
 import ErrorPage from 'pages/ErrorPage';
@@ -13,6 +13,12 @@ import Page from 'components/Page';
 function ArrivalsPage(props) {
   const { match } = props;
   const { station } = match.params;
+
+  const [state, { getAdvisories }] = useRedux();
+
+  useEffect(() => {
+    getAdvisories()
+  }, []);
 
   const advisories = useResource({
     url: '/.netlify/functions/advisories',
