@@ -5,7 +5,7 @@ function mockParser(data) {
 }
 
 describe('API should', () => {
-  test('Returns a correct API endpoint string', () => {
+  test('Return a correct API endpoint string', () => {
     const results = API.createEndpoint('bsa');
     const expectations = 'https://api.bart.gov/api/bsa.aspx?cmd=bsa&key=KEY&json=y';
 
