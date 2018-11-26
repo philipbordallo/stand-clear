@@ -13,7 +13,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 8,
-          "minutes": "3",
+          "minutes": 0,
           "name": "Dublin/Pleasanton",
           "platform": "2"
         },
@@ -27,7 +27,7 @@ export default {
           "hexColor": "#ff0000",
           "isLimited": false,
           "length": 9,
-          "minutes": "10",
+          "minutes": 10,
           "name": "Richmond",
           "platform": "2"
         },
@@ -41,7 +41,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 9,
-          "minutes": "13",
+          "minutes": 13,
           "name": "Antioch",
           "platform": "2"
         },
@@ -55,7 +55,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 9,
-          "minutes": "21",
+          "minutes": 21,
           "name": "Dublin/Pleasanton",
           "platform": "2"
         },
@@ -69,7 +69,7 @@ export default {
           "hexColor": "#ff0000",
           "isLimited": false,
           "length": 9,
-          "minutes": "30",
+          "minutes": 30,
           "name": "Richmond",
           "platform": "2"
         },
@@ -83,7 +83,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 10,
-          "minutes": "33",
+          "minutes": 33,
           "name": "Antioch",
           "platform": "2"
         },
@@ -97,7 +97,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 9,
-          "minutes": "41",
+          "minutes": 41,
           "name": "Dublin/Pleasanton",
           "platform": "2"
         },
@@ -111,7 +111,7 @@ export default {
           "hexColor": "#ff0000",
           "isLimited": false,
           "length": 9,
-          "minutes": "50",
+          "minutes": 50,
           "name": "Richmond",
           "platform": "2"
         },
@@ -125,7 +125,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 10,
-          "minutes": "53",
+          "minutes": 53,
           "name": "Antioch",
           "platform": "2"
         }
@@ -145,7 +145,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 9,
-          "minutes": "4",
+          "minutes": 4,
           "name": "Daly City",
           "platform": "1"
         },
@@ -159,7 +159,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 10,
-          "minutes": "11",
+          "minutes": 11,
           "name": "SFO/Millbrae",
           "platform": "1"
         },
@@ -173,7 +173,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 10,
-          "minutes": "25",
+          "minutes": 25,
           "name": "Daly City",
           "platform": "1"
         },
@@ -187,7 +187,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 10,
-          "minutes": "31",
+          "minutes": 31,
           "name": "SFO/Millbrae",
           "platform": "1"
         },
@@ -201,7 +201,7 @@ export default {
           "hexColor": "#0099cc",
           "isLimited": false,
           "length": 10,
-          "minutes": "45",
+          "minutes": 45,
           "name": "Daly City",
           "platform": "1"
         },
@@ -215,7 +215,7 @@ export default {
           "hexColor": "#ffff33",
           "isLimited": false,
           "length": 10,
-          "minutes": "51",
+          "minutes": 51,
           "name": "SFO/Millbrae",
           "platform": "1"
         }

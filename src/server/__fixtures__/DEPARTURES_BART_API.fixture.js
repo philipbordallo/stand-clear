@@ -95,7 +95,7 @@ export default {
             "limited": "0",
             "estimate": [
               {
-                "minutes": "3",
+                "minutes": "Leaving",
                 "platform": "2",
                 "direction": "North",
                 "length": "8",

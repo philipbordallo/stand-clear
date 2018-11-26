@@ -1,5 +1,8 @@
 import crypto from 'crypto';
 
+import COPY from 'shared/meta/COPY';
+
+
 function departuresListParser(data) {
   return data.reduce((collection, location) => {
     const estimates = location.estimate.map((departure, index) => {
@@ -16,6 +19,10 @@ function departuresListParser(data) {
 
       const departureID = `${location.abbreviation}${departureNumber}_${nameHash}`;
 
+      const minutes = departure.minutes === COPY.leaving
+        ? 0
+        : Number(departure.minutes);
+
       return {
         departureID,
         name: location.destination,
@@ -27,7 +34,7 @@ function departuresListParser(data) {
         hexColor: departure.hexcolor,
         isLimited: Boolean(Number(location.limited)),
         length: Number(departure.length),
-        minutes: departure.minutes,
+        minutes,
         platform: departure.platform,
       };
     });

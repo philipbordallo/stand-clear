@@ -1,7 +1,7 @@
 {
   "name": "stand-clear",
   "version": "1.0.0",
-  "description": "BART Station Arrivals",
+  "description": "BART Station Departures",
   "author": "Philip Bordallo",
   "license": "MIT",
   "homepage": "https://github.com/philipbordallo/stand-clear#readme",

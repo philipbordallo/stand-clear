@@ -14,7 +14,6 @@ function CurrentDeparture(props) {
     hexColor,
     color,
     delay,
-    isLimited,
     length,
   } = props;
 
@@ -22,14 +21,12 @@ function CurrentDeparture(props) {
     backgroundColor: hexColor,
   };
 
-  const isLeavingNow = minutes === COPY.leaving;
-
-  let leaving = `${minutes} minutes`;
-  if (minutes === '1') leaving = `${minutes} minute`;
-  if (isLeavingNow) leaving = 'Leaving now';
+  let departureTime = `${minutes} minutes`;
+  if (minutes === 1) departureTime = `${minutes} minute`;
+  if (minutes === 0) departureTime = COPY.leaving;
 
   let iconClassNames = Classes.icon;
-  if (isLeavingNow) iconClassNames += ` ${Classes.iconLeaving}`;
+  if (minutes === 0) iconClassNames += ` ${Classes.iconLeaving}`;
 
   const isDelayedContent = delay > 0
     ? (
@@ -39,10 +36,6 @@ function CurrentDeparture(props) {
     )
     : null;
 
-  const isLimitedName = isLimited
-    ? 'Limited'
-    : null;
-
   const carLength = `${length} car`;
 
   return (
@@ -50,10 +43,10 @@ function CurrentDeparture(props) {
       <div className={ iconClassNames } style={ iconStyle } title={ color } />
       <div className={ Classes.information }>
         <h3 className={ Classes.title }>
-          { name } { isLimitedName }
+          { name }
         </h3>
         <div>
-          { leaving } { isDelayedContent } – { carLength }
+          { departureTime } { isDelayedContent } – { carLength }
         </div>
       </div>
     </div>

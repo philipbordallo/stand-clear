@@ -1,5 +1,3 @@
-import sortDeparturesByMinutes from 'utilities/sortDeparturesByMinutes';
-
 /**
  * Collects Departures by the direction they are heading,
  * Sets the platforms that are in that direction,
@@ -43,7 +41,7 @@ function directionsParser(data) {
     ...collection,
     [direction]: {
       ...directions[direction],
-      list: directions[direction].list.slice().sort(sortDeparturesByMinutes),
+      list: directions[direction].list.slice().sort((a, b) => a.minutes - b.minutes),
     },
   }), {});
 }

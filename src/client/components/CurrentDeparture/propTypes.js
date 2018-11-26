@@ -11,6 +11,6 @@ export const CurrentDepartureShape = {
   hexColor: PT.string.isRequired,
   isLimited: PT.bool.isRequired,
   length: PT.number.isRequired,
-  minutes: PT.string.isRequired,
+  minutes: PT.number.isRequired,
   platform: PT.string.isRequired,
 };

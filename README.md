@@ -1,2 +1,2 @@
 # stand-clear
-> [BART](https://www.bart.gov) Station Arrivals
+> [BART](https://www.bart.gov) Station Departures
