@@ -18,7 +18,7 @@ const NAV_LINKS = [
   },
   {
     to: '/station/:station',
-    name: 'Arrivals',
+    name: 'Departures',
     icon: 'subway',
   },
   {

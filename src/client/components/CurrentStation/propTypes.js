@@ -1,6 +1,6 @@
 import PT from 'prop-types';
 
-import { CurrentArrivalShape } from 'components/CurrentArrival/propTypes';
+import { CurrentDepartureShape } from 'components/CurrentDeparture/propTypes';
 
 export const DirectionPT = PT.shape({
   name: PT.string.isRequired,
@@ -8,6 +8,6 @@ export const DirectionPT = PT.shape({
     PT.string,
   ).isRequired,
   list: PT.arrayOf(
-    PT.shape(CurrentArrivalShape),
+    PT.shape(CurrentDepartureShape),
   ),
 });

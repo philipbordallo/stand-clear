@@ -1,8 +1,8 @@
 import currentStationParser from '../currentStationParser';
 
-import ARRIVALS_BART_API from '__fixtures__/ARRIVALS_BART_API.fixture';
-import ARRIVALS_BART_API_EMPTY from '__fixtures__/ARRIVALS_BART_API_EMPTY.fixture';
-import ARRIVALS_PARSED from '__fixtures__/ARRIVALS_PARSED.fixture';
+import DEPARTURES_BART_API from '__fixtures__/DEPARTURES_BART_API.fixture';
+import DEPARTURES_BART_API_EMPTY from '__fixtures__/DEPARTURES_BART_API_EMPTY.fixture';
+import DEPARTURES_PARSED from '__fixtures__/DEPARTURES_PARSED.fixture';
 
 
 const TESTS = [
@@ -13,15 +13,15 @@ const TESTS = [
   ],
   [
     'Return correctly parsed data',
-    ARRIVALS_BART_API,
-    ARRIVALS_PARSED
+    DEPARTURES_BART_API,
+    DEPARTURES_PARSED
   ],
   [
     'Return correctly empty data',
-    ARRIVALS_BART_API_EMPTY,
+    DEPARTURES_BART_API_EMPTY,
     {
       "abbreviation": "POWL",
-      "arrivals": {},
+      "departures": {},
       "date": "11/20/2018",
       "name": "Powell St.",
       "time": "08:23:16 PM PST"

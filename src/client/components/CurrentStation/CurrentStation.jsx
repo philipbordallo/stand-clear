@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import CurrentArrival from 'components/CurrentArrival';
+import CurrentDeparture from 'components/CurrentDeparture';
 
 import { DirectionPT } from './propTypes';
 
@@ -13,21 +13,21 @@ function CurrentStation(props) {
     abbreviation,
     date,
     time,
-    arrivals,
+    departures,
     name,
   } = props;
 
-  const hasArrivals = Object.keys(arrivals).length > 0;
+  const hasDepartures = Object.keys(departures).length > 0;
 
-  function renderArrivalsItem(arrival) {
-    const { arrivalID } = arrival;
+  function renderDepartureItem(departure) {
+    const { departureID } = departure;
     return (
-      <CurrentArrival key={ arrivalID } { ...arrival } />
+      <CurrentDeparture key={ departureID } { ...departure } />
     );
   }
 
-  function renderArrivals(direction) {
-    const currentDirection = arrivals[direction];
+  function renderDepartures(direction) {
+    const currentDirection = departures[direction];
 
     const directionPlatforms = Array.from(currentDirection.platforms).join(', ');
 
@@ -38,7 +38,7 @@ function CurrentStation(props) {
           <span className={ Classes.subtitle }>Platforms { directionPlatforms }</span>
           <span className={ Classes.abbreviation }>{ abbreviation }</span>
         </h2>
-        { currentDirection.list.map(renderArrivalsItem) }
+        { currentDirection.list.map(renderDepartureItem) }
       </div>
     );
   }
@@ -46,7 +46,7 @@ function CurrentStation(props) {
   if (showContent) {
     return (
       <div>
-        { hasArrivals ? Object.keys(arrivals).map(renderArrivals) : null }
+        { hasDepartures ? Object.keys(departures).map(renderDepartures) : null }
 
         <p className={ Classes.information }>
           Information accurate as of { time } on { date } for { name } Station.
@@ -63,7 +63,7 @@ CurrentStation.propTypes = {
   date: PT.string,
   name: PT.string,
   time: PT.string,
-  arrivals: PT.shape({
+  departures: PT.shape({
     northBound: DirectionPT,
     southBound: DirectionPT,
   }),
@@ -73,7 +73,7 @@ CurrentStation.defaultProps = {
   date: '',
   name: '',
   time: '',
-  arrivals: {},
+  departures: {},
 };
 
 export default CurrentStation;

@@ -1,7 +1,7 @@
 import PT from 'prop-types';
 
-export const CurrentArrivalShape = {
-  arrivalID: PT.string.isRequired,
+export const CurrentDepartureShape = {
+  departureID: PT.string.isRequired,
   name: PT.string.isRequired,
   abbreviation: PT.string.isRequired,
   direction: PT.oneOf(['North', 'South']).isRequired,

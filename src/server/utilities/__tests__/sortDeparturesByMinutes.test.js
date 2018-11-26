@@ -1,4 +1,4 @@
-import sortArrivalsByMinutes from '../sortArrivalsByMinutes';
+import sortDeparturesByMinutes from '../sortDeparturesByMinutes';
 
 const TESTS = [
   [
@@ -33,9 +33,9 @@ const TESTS = [
   ]
 ]
 
-describe('sortArrivalsByMinutes should', () => {
+describe('sortDeparturesByMinutes should', () => {
   test.each(TESTS)('%s', (name, data, expectations) => {
-    const results = data.sort(sortArrivalsByMinutes)
+    const results = data.sort(sortDeparturesByMinutes)
 
     expect(results).toEqual(expectations);
   });

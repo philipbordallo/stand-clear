@@ -1,4 +1,4 @@
-import arrivalsListParser from 'parsers/arrivalsListParser';
+import departuresListParser from 'parsers/departuresListParser';
 import directionsParser from 'parsers/directionsParser';
 
 function currentStationParser(data) {
@@ -6,17 +6,17 @@ function currentStationParser(data) {
     const currentStation = data.root.station[0];
 
     const list = currentStation.etd
-      ? arrivalsListParser(currentStation.etd)
+      ? departuresListParser(currentStation.etd)
       : [];
 
-    const arrivals = directionsParser(list);
+    const departures = directionsParser(list);
 
     return {
       abbreviation: currentStation.abbr,
       name: currentStation.name,
       date: data.root.date,
       time: data.root.time,
-      arrivals,
+      departures,
     };
   }
 

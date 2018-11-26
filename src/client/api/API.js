@@ -16,10 +16,10 @@ const API = {
       .then(handleResponse);
   },
 
-  getStationArrivals(station) {
-    return fetch(`/.netlify/functions/arrivals/${station}`)
+  getStationDepartures(station) {
+    return fetch(`/.netlify/functions/departures/${station}`)
       .then(handleResponse);
-  }
+  },
 };
 
 export default API;

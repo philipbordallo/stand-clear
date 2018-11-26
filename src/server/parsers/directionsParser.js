@@ -1,17 +1,17 @@
-import sortArrivalsByMinutes from 'utilities/sortArrivalsByMinutes';
+import sortDeparturesByMinutes from 'utilities/sortDeparturesByMinutes';
 
 /**
- * Collects Arrivals by the direction they are heading,
+ * Collects Departures by the direction they are heading,
  * Sets the platforms that are in that direction,
- * And sorts the directions by their arrival time
+ * And sorts the directions by their departure time
  *
- * @param {Object} data - Arrivals
+ * @param {Object} data - Departures
  * @param {Object}
  */
 function directionsParser(data) {
-  // Collection arrivals by direction
-  const directions = data.reduce((collection, arrival) => {
-    const directionKey = `${arrival.direction.toLowerCase()}Bound`;
+  // Collection departures by direction
+  const directions = data.reduce((collection, departure) => {
+    const directionKey = `${departure.direction.toLowerCase()}Bound`;
     const prevDirection = collection[directionKey];
 
     if (prevDirection) {
@@ -21,9 +21,9 @@ function directionsParser(data) {
           ...prevDirection,
           list: [
             ...prevDirection.list,
-            arrival,
+            departure,
           ],
-          platforms: prevDirection.platforms.add(arrival.platform),
+          platforms: prevDirection.platforms.add(departure.platform),
         },
       };
     }
@@ -31,19 +31,19 @@ function directionsParser(data) {
     return {
       ...collection,
       [directionKey]: {
-        name: arrival.direction,
-        platforms: new Set([arrival.platform]),
-        list: [arrival],
+        name: departure.direction,
+        platforms: new Set([departure.platform]),
+        list: [departure],
       },
     };
   }, {});
 
-  // Sort directions by arrival time
+  // Sort directions by departure time
   return Object.keys(directions).reduce((collection, direction) => ({
     ...collection,
     [direction]: {
       ...directions[direction],
-      list: directions[direction].list.slice().sort(sortArrivalsByMinutes),
+      list: directions[direction].list.slice().sort(sortDeparturesByMinutes),
     },
   }), {});
 }

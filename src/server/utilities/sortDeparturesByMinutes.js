@@ -1,6 +1,6 @@
 import COPY from 'shared/meta/COPY';
 
-function sortArrivalsByMinutes(a, b) {
+function sortDeparturesByMinutes(a, b) {
   const aMinutes = a.minutes === COPY.leaving
     ? 0
     : a.minutes;
@@ -12,4 +12,4 @@ function sortArrivalsByMinutes(a, b) {
   return aMinutes - bMinutes;
 }
 
-export default sortArrivalsByMinutes;
+export default sortDeparturesByMinutes;

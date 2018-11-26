@@ -1,11 +1,11 @@
 export default {
   "abbreviation": "POWL",
-  "arrivals": {
+  "departures": {
     "northBound": {
       "list": [
         {
           "abbreviation": "DUBL",
-          "arrivalID": "DUBL01_4348800",
+          "departureID": "DUBL01_4348800",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 162,
@@ -19,7 +19,7 @@ export default {
         },
         {
           "abbreviation": "RICH",
-          "arrivalID": "RICH01_d4af3c7",
+          "departureID": "RICH01_d4af3c7",
           "canBikesRide": true,
           "color": "RED",
           "delay": 0,
@@ -33,7 +33,7 @@ export default {
         },
         {
           "abbreviation": "ANTC",
-          "arrivalID": "ANTC01_137d99d",
+          "departureID": "ANTC01_137d99d",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,
@@ -47,7 +47,7 @@ export default {
         },
         {
           "abbreviation": "DUBL",
-          "arrivalID": "DUBL02_4348800",
+          "departureID": "DUBL02_4348800",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 0,
@@ -61,7 +61,7 @@ export default {
         },
         {
           "abbreviation": "RICH",
-          "arrivalID": "RICH02_d4af3c7",
+          "departureID": "RICH02_d4af3c7",
           "canBikesRide": true,
           "color": "RED",
           "delay": 0,
@@ -75,7 +75,7 @@ export default {
         },
         {
           "abbreviation": "ANTC",
-          "arrivalID": "ANTC02_137d99d",
+          "departureID": "ANTC02_137d99d",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,
@@ -89,7 +89,7 @@ export default {
         },
         {
           "abbreviation": "DUBL",
-          "arrivalID": "DUBL03_4348800",
+          "departureID": "DUBL03_4348800",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 0,
@@ -103,7 +103,7 @@ export default {
         },
         {
           "abbreviation": "RICH",
-          "arrivalID": "RICH03_d4af3c7",
+          "departureID": "RICH03_d4af3c7",
           "canBikesRide": true,
           "color": "RED",
           "delay": 0,
@@ -117,7 +117,7 @@ export default {
         },
         {
           "abbreviation": "ANTC",
-          "arrivalID": "ANTC03_137d99d",
+          "departureID": "ANTC03_137d99d",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,
@@ -137,7 +137,7 @@ export default {
       "list": [
         {
           "abbreviation": "DALY",
-          "arrivalID": "DALY01_c1ceb36",
+          "departureID": "DALY01_c1ceb36",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 0,
@@ -151,7 +151,7 @@ export default {
         },
         {
           "abbreviation": "MLBR",
-          "arrivalID": "MLBR01_a1a19e1",
+          "departureID": "MLBR01_a1a19e1",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,
@@ -165,7 +165,7 @@ export default {
         },
         {
           "abbreviation": "DALY",
-          "arrivalID": "DALY02_c1ceb36",
+          "departureID": "DALY02_c1ceb36",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 0,
@@ -179,7 +179,7 @@ export default {
         },
         {
           "abbreviation": "MLBR",
-          "arrivalID": "MLBR02_a1a19e1",
+          "departureID": "MLBR02_a1a19e1",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,
@@ -193,7 +193,7 @@ export default {
         },
         {
           "abbreviation": "DALY",
-          "arrivalID": "DALY03_c1ceb36",
+          "departureID": "DALY03_c1ceb36",
           "canBikesRide": true,
           "color": "BLUE",
           "delay": 0,
@@ -207,7 +207,7 @@ export default {
         },
         {
           "abbreviation": "MLBR",
-          "arrivalID": "MLBR03_a1a19e1",
+          "departureID": "MLBR03_a1a19e1",
           "canBikesRide": true,
           "color": "YELLOW",
           "delay": 0,

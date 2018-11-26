@@ -14,7 +14,6 @@ function createActions(actions, dispatch) {
 
 function useRedux() {
   const { storeState: state, store: { dispatch } } = useContext(ReactReduxContext);
-
   const actions = createActions(actionsList, dispatch);
 
   return [state, actions];

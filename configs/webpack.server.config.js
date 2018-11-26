@@ -30,7 +30,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
     advisories: path.resolve(SERVER_PATH, 'functions', 'advisories.js'),
-    arrivals: path.resolve(SERVER_PATH, 'functions', 'arrivals.js'),
+    departures: path.resolve(SERVER_PATH, 'functions', 'departures.js'),
   },
   output: {
     path: path.resolve(DIST_PATH, 'server'),

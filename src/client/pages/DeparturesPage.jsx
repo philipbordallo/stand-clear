@@ -10,25 +10,21 @@ import ErrorPage from 'pages/ErrorPage';
 import Page from 'components/Page';
 
 
-function ArrivalsPage(props) {
+function DeparturesPage(props) {
   const { match } = props;
   const { station } = match.params;
 
-  const [state, { getAdvisories }] = useRedux();
+  const [, { getAdvisories }] = useRedux();
 
   useEffect(() => {
-    getAdvisories()
+    getAdvisories();
   }, []);
 
-  const advisories = useResource({
-    url: '/.netlify/functions/advisories',
-  });
-
   const currentStation = useResource({
-    url: `/.netlify/functions/arrivals/${station}`,
+    url: `/.netlify/functions/departures/${station}`,
   }, [station]);
 
-  useLogger({ currentStation, station, advisories });
+  useLogger({ currentStation, station });
 
   const hasLoaded = !currentStation.isLoading && currentStation.hasLoaded;
 
@@ -50,7 +46,7 @@ function ArrivalsPage(props) {
     </Page>
   );
 }
-ArrivalsPage.propTypes = {
+DeparturesPage.propTypes = {
   match: ReactRouterPT.match({
     station: PT.string,
   }).isRequired,
@@ -58,4 +54,4 @@ ArrivalsPage.propTypes = {
   history: ReactRouterPT.history.isRequired,
 };
 
-export default ArrivalsPage;
+export default DeparturesPage;

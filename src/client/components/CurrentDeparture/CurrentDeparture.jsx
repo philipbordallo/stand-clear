@@ -1,14 +1,14 @@
 import React from 'react';
 
 import COPY from 'shared/meta/COPY';
-import { CurrentArrivalShape } from './propTypes';
+import { CurrentDepartureShape } from './propTypes';
 
 import Classes from './styles';
 
 
-function CurrentArrival(props) {
+function CurrentDeparture(props) {
   const {
-    arrivalID,
+    departureID,
     minutes,
     name,
     hexColor,
@@ -46,7 +46,7 @@ function CurrentArrival(props) {
   const carLength = `${length} car`;
 
   return (
-    <div key={ arrivalID } className={ Classes.root }>
+    <div key={ departureID } className={ Classes.root }>
       <div className={ iconClassNames } style={ iconStyle } title={ color } />
       <div className={ Classes.information }>
         <h3 className={ Classes.title }>
@@ -59,6 +59,6 @@ function CurrentArrival(props) {
     </div>
   );
 }
-CurrentArrival.propTypes = CurrentArrivalShape;
+CurrentDeparture.propTypes = CurrentDepartureShape;
 
-export default CurrentArrival;
+export default CurrentDeparture;
