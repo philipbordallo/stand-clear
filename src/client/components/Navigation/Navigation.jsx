@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PT from 'prop-types';
 
 
@@ -69,4 +69,4 @@ Navigation.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(Navigation);
+export default withRouter(memo(Navigation));

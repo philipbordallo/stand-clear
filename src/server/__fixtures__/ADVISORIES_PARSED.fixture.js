@@ -1,9 +1,10 @@
 export default {
-  "date": "06/26/2017",
+  "date": "11/23/2018",
   "list": [
     {
-      "description": "No delays reported."
+      "description": "There is a 30-minute delay on the San Francisco Line in the Antioch direction due to an equipment problem on a train. ",
+      "type": "DELAY",
     }
   ],
-  "time": "11:08:00 AM PDT"
+  "time": "16:57:00 PM PST"
 }

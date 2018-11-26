@@ -2,6 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 
 import CurrentDeparture from 'components/CurrentDeparture';
+import InformationCallout from 'components/InformationCallout';
 
 import { DirectionPT } from './propTypes';
 
@@ -48,9 +49,9 @@ function CurrentStation(props) {
       <div>
         { hasDepartures ? Object.keys(departures).map(renderDepartures) : null }
 
-        <p className={ Classes.information }>
+        <InformationCallout>
           Information accurate as of { time } on { date } for { name } Station.
-        </p>
+        </InformationCallout>
       </div>
     );
   }

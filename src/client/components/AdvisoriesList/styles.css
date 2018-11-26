@@ -1,0 +1,28 @@
+.advisory {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.delayAdvisory {
+  composes: advisory;
+  padding: .25rem;
+  border-radius: 3px;
+}
+
+.emergencyAdvisory {
+  composes: delayAdvisory;
+  background-color: #FFEBEE;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: .5rem;
+
+  @nest .emergencyAdvisory & {
+    color: #E53935
+  }
+}
+
+.description {
+  margin: 0;
+}

@@ -1,0 +1,19 @@
+.root {
+  margin-top: 1.5rem;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: .5rem 0;
+  font-size: .8125rem;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: .25rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.paragraph {
+  margin: 0;
+}
