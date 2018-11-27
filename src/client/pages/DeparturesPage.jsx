@@ -14,11 +14,15 @@ function DeparturesPage(props) {
   const { match } = props;
   const { station } = match.params;
 
-  const [, { getAdvisories }] = useRedux();
+  const [, { getAdvisories, updateStationLink }] = useRedux();
 
   useEffect(() => {
     getAdvisories();
   }, []);
+
+  useEffect(() => {
+    updateStationLink(station);
+  }, [station]);
 
   const currentStation = useResource({
     url: `/.netlify/functions/departures/${station}`,

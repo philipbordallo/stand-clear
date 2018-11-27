@@ -1,10 +1,8 @@
 import API from 'api';
 
-export const ActionTypes = {
-  GET_ADVISORIES_START: 'GET_ADVISORIES_START',
-  GET_ADVISORIES_SUCCESS: 'GET_ADVISORIES_SUCCESS',
-  GET_ADVISORIES_FAILURE: 'GET_ADVISORIES_FAILURE',
-};
+import ActionTypes from './ActionTypes';
+import getTimestamp from 'utilities/getTimestamp';
+
 
 const getAdvisoriesStart = () => ({
   type: ActionTypes.GET_ADVISORIES_START,
@@ -20,12 +18,20 @@ const getAdvisoriesFailure = error => ({
   error,
 });
 
-export const getAdvisories = () => (dispatch) => {
-  dispatch(getAdvisoriesStart());
+export const getAdvisories = () => (dispatch, getState) => {
+  const { advisories } = getState();
+  const timestamp = getTimestamp();
 
-  API.getAdvisories()
-    .then(
-      data => dispatch(getAdvisoriesSuccess(data)),
-      error => dispatch(getAdvisoriesFailure(error)),
-    );
+  const timestampDiff = timestamp - advisories.timestamp;
+
+  // Update advisories only if a minute has passed or it's a new page/refresh
+  if (timestampDiff > 60 || timestampDiff <= 2) {
+    dispatch(getAdvisoriesStart());
+
+    API.getAdvisories()
+      .then(
+        data => dispatch(getAdvisoriesSuccess(data)),
+        error => dispatch(getAdvisoriesFailure(error)),
+      );
+  }
 };

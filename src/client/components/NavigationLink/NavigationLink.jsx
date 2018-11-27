@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PT from 'prop-types';
 
 import Link from 'components/Link';
@@ -13,10 +13,12 @@ function NavigationLink(props) {
     children,
     isCurrent,
     icon,
+    hasNotification,
   } = props;
 
   let classNames = Classes.root;
   if (isCurrent) classNames += ` ${Classes.active}`;
+  if (hasNotification) classNames += ` ${Classes.notifications}`;
 
   const iconName = isCurrent
     ? `${icon}-filled`
@@ -25,16 +27,16 @@ function NavigationLink(props) {
   return (
     <Link to={ to } className={ classNames }>
       <Icon name={ iconName } size="36" />
-
       { children }
     </Link>
   );
 }
 NavigationLink.propTypes = {
+  hasNotification: PT.bool.isRequired,
   icon: PT.string.isRequired,
   to: PT.string.isRequired,
   children: PT.node.isRequired,
   isCurrent: PT.bool.isRequired,
 };
 
-export default NavigationLink;
+export default memo(NavigationLink);

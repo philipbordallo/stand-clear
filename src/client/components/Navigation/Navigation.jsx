@@ -1,56 +1,30 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 
 
 import { withRouter } from 'react-router-dom';
 import ReactRouterPT from 'propTypes/ReactRouterPT';
+import { useRedux } from 'hooks';
 
 import NavigationLink from 'components/NavigationLink';
 
 import Classes from './styles';
 
 
-const NAV_LINKS = [
-  {
-    to: '/',
-    name: 'Stations',
-    icon: 'location',
-  },
-  {
-    to: '/station/:station',
-    name: 'Departures',
-    icon: 'subway',
-  },
-  {
-    to: '/advisories',
-    name: 'Advisories',
-    icon: 'flag',
-  },
-  {
-    to: '/settings',
-    name: 'Settings',
-    icon: 'head',
-  },
-];
-
 function Navigation(props) {
   const { match } = props;
 
-  function renderNavLinks(link, index) {
-    const { to, name, icon } = link;
+  const [{ navigation }] = useRedux();
 
-    const url = to === '/station/:station'
-      ? to.replace(':station', '19th')
-      : to;
+  function renderNavLinks(link) {
+    const { name, ...rest } = link;
 
-    const isCurrent = to === match.path;
+    const isCurrent = link.to === match.url;
 
     return (
       <NavigationLink
-        key={ index }
-        to={ url }
         isCurrent={ isCurrent }
-        icon={ icon }
+        { ...rest }
       >
         { name }
       </NavigationLink>
@@ -59,7 +33,7 @@ function Navigation(props) {
 
   return (
     <nav className={ Classes.root }>
-      { NAV_LINKS.map(renderNavLinks) }
+      { navigation.map(renderNavLinks) }
     </nav>
   );
 }
@@ -69,4 +43,4 @@ Navigation.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(memo(Navigation));
+export default withRouter(Navigation);
