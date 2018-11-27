@@ -1,2 +1,3 @@
-export { getAdvisories } from 'actions/advisoriesActions';
-export { updateStationLink } from 'actions/navigationActions';
+export { default as getAdvisories } from './getAdvisories';
+export { default as getDepartures } from './getDepartures';
+export { default as updateStationLink } from './updateStationLink';

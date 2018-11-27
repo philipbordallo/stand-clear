@@ -18,7 +18,7 @@ const getAdvisoriesFailure = error => ({
   error,
 });
 
-export const getAdvisories = () => (dispatch, getState) => {
+const getAdvisories = () => (dispatch, getState) => {
   const { advisories } = getState();
   const timestamp = getTimestamp();
 
@@ -35,3 +35,5 @@ export const getAdvisories = () => (dispatch, getState) => {
       );
   }
 };
+
+export default getAdvisories;

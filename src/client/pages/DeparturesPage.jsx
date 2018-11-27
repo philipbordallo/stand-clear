@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import ReactRouterPT from 'propTypes/ReactRouterPT';
 
-import { useResource, useLogger, useRedux } from 'hooks';
+import { useRedux } from 'hooks';
 
 import CurrentStation from 'components/CurrentStation';
 import ErrorPage from 'pages/ErrorPage';
@@ -14,7 +14,10 @@ function DeparturesPage(props) {
   const { match } = props;
   const { station } = match.params;
 
-  const [, { getAdvisories, updateStationLink }] = useRedux();
+  const [
+    { departures },
+    { getAdvisories, getDepartures, updateStationLink },
+  ] = useRedux();
 
   useEffect(() => {
     getAdvisories();
@@ -22,30 +25,25 @@ function DeparturesPage(props) {
 
   useEffect(() => {
     updateStationLink(station);
+    getDepartures(station);
   }, [station]);
 
-  const currentStation = useResource({
-    url: `/.netlify/functions/departures/${station}`,
-  }, [station]);
+  const hasLoaded = !departures.isLoading && departures.hasLoaded;
 
-  useLogger({ currentStation, station });
-
-  const hasLoaded = !currentStation.isLoading && currentStation.hasLoaded;
-
-  if (currentStation.hasError) {
+  if (departures.hasError) {
     return (
       <ErrorPage
-        title={ currentStation.error.name }
-        message={ currentStation.error.message }
+        title={ departures.error.name }
+        message={ departures.error.message }
       />
     );
   }
 
   return (
-    <Page title={ hasLoaded ? currentStation.data.name : '' }>
+    <Page title={ hasLoaded ? departures.data.name : '' }>
       <CurrentStation
         showContent={ hasLoaded }
-        { ...currentStation.data }
+        { ...departures.data }
       />
     </Page>
   );

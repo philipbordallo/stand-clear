@@ -1,7 +1,9 @@
 import ActionTypes from './ActionTypes';
 
 
-export const updateStationLink = data => ({
+const updateStationLink = data => ({
   type: ActionTypes.UPDATE_STATION_LINK,
   data,
 });
+
+export default updateStationLink;

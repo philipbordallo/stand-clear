@@ -16,7 +16,7 @@ const API = {
       .then(handleResponse);
   },
 
-  getStationDepartures(station) {
+  getDepartures(station) {
     return fetch(`/.netlify/functions/departures/${station}`)
       .then(handleResponse);
   },
