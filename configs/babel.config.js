@@ -1,11 +1,11 @@
 module.exports = () => {
   const presets = [
     ['@babel/preset-env', { useBuiltIns: 'usage' }],
-    '@babel/preset-react'
+    '@babel/preset-react',
   ];
 
   const plugins = [
-    '@babel/proposal-object-rest-spread'
+    '@babel/proposal-object-rest-spread',
   ];
 
   if (process.env.NODE_ENV === 'development') {
@@ -14,6 +14,6 @@ module.exports = () => {
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };

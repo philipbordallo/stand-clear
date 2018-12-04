@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700');
 
+html {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -14,7 +19,7 @@ body {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 h1, h2, h3, h4, h5, h6, p {

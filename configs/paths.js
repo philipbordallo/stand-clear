@@ -11,5 +11,5 @@ module.exports = {
   CONFIGS_PATH,
   CLIENT_PATH,
   SERVER_PATH,
-  DIST_PATH
+  DIST_PATH,
 };

@@ -1,3 +1,27 @@
+.root {
+  padding-top: .5rem;
+}
+
+.actionBar {
+  display: flex;
+  margin-bottom: 1rem;
+  position: relative;
+  max-width: 350px;
+}
+
+.button {
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
+.filler {
+  min-height: 2.625rem;
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
 .links {
   display: grid;
   grid-template-columns: 1fr 1fr;

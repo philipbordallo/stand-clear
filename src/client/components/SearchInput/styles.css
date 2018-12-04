@@ -1,0 +1,52 @@
+.root {
+  width: 15%;
+  display: flex;
+}
+
+.shape {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.input {
+  composes: shape;
+  padding: .5rem;
+  width: 15%;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  padding-right: 42px;
+  height: 100%;
+  opacity: 0;
+  color: transparent;
+  transition-property: width, opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+  @nest .expanded & {
+    color: inherit;
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.inputButton {
+  max-width: 54px;
+  background-color: white;
+  position: relative;
+  z-index: 10;
+  composes: shape;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition-property: border-color;
+  transition-duration: 250ms;
+
+  @nest .expanded & {
+    border-color: transparent;
+    background-color: transparent;
+
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PT from 'prop-types';
 
 import ReactRouterPT from 'propTypes/ReactRouterPT';
@@ -28,6 +28,8 @@ function renderStations(station) {
 
 function StationSelector(props) {
   const { getClosestStation, closestStation, history } = props;
+  const [searchValue, setSearchValue] = useState('');
+  const [isSearchExpanded, toggleSearchExpanded] = useState(false);
 
   useEffect(() => {
     if (closestStation.abbreviation) {
@@ -40,12 +42,44 @@ function StationSelector(props) {
     getClosestStation();
   };
 
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleClear = () => {
+    setSearchValue('');
+  };
+
+  const stationFilter = (station = {}) => {
+    const { name, shortName, city } = station;
+    const searchValueRegExp = new RegExp(searchValue.toLowerCase().trim(), 'g');
+    const found = `${name.toLowerCase()} ${shortName.toLowerCase()} ${city.toLowerCase()}`
+      .match(searchValueRegExp);
+    return found && found.length > 0;
+  };
+
   return (
-    <div>
-      <Button onClick={ handleClick }>Find Closest Station</Button>
-      <SearchInput />
+    <div className={ Classes.root }>
+      <div className={ Classes.actionBar }>
+        <Button
+          className={ Classes.button }
+          onClick={ handleClick }
+          disabled={ isSearchExpanded }
+        >
+          Find Closest Station
+        </Button>
+
+
+        <SearchInput
+          onClear={ handleClear }
+          onChange={ handleChange }
+          searchValue={ searchValue }
+          isSearchExpanded={ isSearchExpanded }
+          toggleSearchExpanded={ toggleSearchExpanded }
+        />
+      </div>
       <div className={ Classes.links }>
-        { STATION_LIST.map(renderStations) }
+        { STATION_LIST.filter(stationFilter).map(renderStations) }
       </div>
     </div>
   );
