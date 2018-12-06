@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 
 const SVGSpriteMapPlugin = require('svg-spritemap-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -11,6 +10,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const {
   LOADER,
   DEFINE_ENV,
+  DEV_SERVER,
   STATS,
 } = require('./webpack.helpers');
 
@@ -49,33 +49,8 @@ const RULES = {
   },
 };
 
-const DEV_SERVER = isDevelopment && {
-  before(app, server) {
-    console.log(server.allowedHosts.map(host => `~ https://${host}:${process.env.PORT}`).join('\n'), '\n');
-  },
-  allowedHosts: process.env.ALLOWED_HOSTS.split(','),
-  compress: true,
-  contentBase: DIST_PATH,
-  historyApiFallback: true,
-  host: '0.0.0.0',
-  hot: true,
-  https: {
-    key: fs.readFileSync(process.env.SSL_KEY),
-    cert: fs.readFileSync(process.env.SSL_CERT),
-    ca: fs.readFileSync(process.env.SSL_CA),
-  },
-  inline: true,
-  port: process.env.PORT,
-  proxy: {
-    '/.netlify/functions/': {
-      target: 'http://localhost:9000',
-      pathRewrite: { '^/.netlify/functions': '' },
-    },
-  },
-  stats: STATS,
-};
-
 module.exports = {
+  ...isDevelopment ? { devServer: DEV_SERVER } : null,
   name: 'client',
   mode: process.env.NODE_ENV,
   entry: {
@@ -86,7 +61,6 @@ module.exports = {
     filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
     publicPath: '/',
   },
-  devServer: DEV_SERVER,
   module: {
     rules: [
       RULES.jsx,

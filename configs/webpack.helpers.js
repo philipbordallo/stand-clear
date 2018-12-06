@@ -1,5 +1,6 @@
+const fs = require('fs');
 const path = require('path');
-const { CONFIGS_PATH } = require('./paths');
+const { CONFIGS_PATH, DIST_PATH } = require('./paths');
 
 const plugins = require('./postcss.plugins');
 
@@ -48,8 +49,35 @@ const STATS = {
   timings: true,
 };
 
+const DEV_SERVER = {
+  before(app, server) {
+    console.log(server.allowedHosts.map(host => `~ https://${host}:${process.env.PORT}`).join('\n'), '\n');
+  },
+  allowedHosts: process.env.ALLOWED_HOSTS.split(','),
+  compress: true,
+  contentBase: DIST_PATH,
+  historyApiFallback: true,
+  host: '0.0.0.0',
+  hot: true,
+  https: {
+    key: fs.readFileSync(process.env.SSL_KEY),
+    cert: fs.readFileSync(process.env.SSL_CERT),
+    ca: fs.readFileSync(process.env.SSL_CA),
+  },
+  inline: true,
+  port: process.env.PORT,
+  proxy: {
+    '/.netlify/functions/': {
+      target: 'http://localhost:9000',
+      pathRewrite: { '^/.netlify/functions': '' },
+    },
+  },
+  stats: STATS,
+};
+
 module.exports = {
   DEFINE_ENV,
+  DEV_SERVER,
   LOADER,
   STATS,
 };
