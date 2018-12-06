@@ -14,6 +14,8 @@ body {
   font-family: 'IBM Plex Mono', system-ui;
   margin: 0;
   line-height: 1.5;
+  background-color: var(--color00);
+  color: var(--color05);
 }
 
 *,

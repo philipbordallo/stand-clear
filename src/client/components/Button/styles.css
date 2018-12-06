@@ -18,24 +18,24 @@
 }
 
 .primary {
-  color: white;
-  border-color: black;
-  background-color: black;
+  color: var(--color00);
+  border-color: var(--color05);
+  background-color: var(--color05);
 
   &:hover {
-    background-color: white;
+    background-color: var(--color00);
     border-color: currentColor;
-    color: black;
+    color: var(--color05);
   }
 }
 
 .secondary {
-  color: black;
+  color: var(--color05);
   border-color: currentColor;
 
   &:hover {
-    background-color: black;
-    border-color: black;
-    color: white;
+    background-color: var(--color05);
+    border-color: var(--color05);
+    color: var(--color00);
   }
 }

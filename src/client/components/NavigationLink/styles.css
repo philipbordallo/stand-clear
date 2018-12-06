@@ -6,20 +6,8 @@
   font-size: .8125rem;
 
   &:any-link {
-    color: black;
+    color: var(--color05);
     text-decoration: none;
-  }
-}
-
-.icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: red;
-  margin-bottom: .25rem;
-
-  @nest .active & {
-    background-color: blue;
   }
 }
 
@@ -34,6 +22,6 @@
     border-radius: 50%;
     height: 10px;
     width: 10px;
-    background-color: #E53935;
+    background-color: var(--colorWarning);
   }
 }

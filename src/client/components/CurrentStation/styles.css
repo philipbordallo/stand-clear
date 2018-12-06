@@ -16,7 +16,7 @@
 }
 
 .abbreviation {
-  background-color: whitesmoke;
+  background-color: var(--color01);
   font-size: 1.25rem;
   font-weight: normal;
   padding: 0 .25em;

@@ -1,17 +1,26 @@
 .root {
   display: flex;
   margin-bottom: 0.75rem;
-  border: 1px solid lightgray;
+  border: 1px solid var(--color02);
   padding: 0.5rem;
   border-radius: 1rem;
+
+  @nest :global(.dark) & {
+    border-color: transparent;
+    background-color: var(--color01)
+  }
 }
 
 .icon {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid var(--color05);
   flex-shrink: 0;
+
+  @nest :global(.dark) & {
+    border-color: transparent;
+  }
 }
 
 .iconLeaving {
@@ -53,7 +62,7 @@
 .delayed {
   text-transform: uppercase;
   font-size: .8125rem;
-  background-color: black;
-  color: white;
+  background-color: var(--color05);
+  color: var(--color00);
   padding: 0 .5em;
 }

@@ -5,11 +5,11 @@
 }
 
 .transparentBackground {
-  background-color: rgba(255,255,255,.95);
+  background-color: var(--colorTransparent);
 
   @supports (backdrop-filter: blur(0)) {
     & {
-      background-color: rgba(255,255,255,.5);
+      background-color: var(--colorSemiTransparent);
       backdrop-filter: blur(12px);
     }
   }

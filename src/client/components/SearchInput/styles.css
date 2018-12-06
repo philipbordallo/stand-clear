@@ -4,11 +4,12 @@
 }
 
 .shape {
-  border: 1px solid black;
+  border: 1px solid var(--color05);
   border-radius: 5px;
 }
 
 .input {
+  color: var(--color05);
   composes: shape;
   padding: .5rem;
   width: 15%;
@@ -18,24 +19,26 @@
   padding-right: 42px;
   height: 100%;
   opacity: 0;
-  color: transparent;
   transition-property: width, opacity;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
+  @nest :global(.dark) & {
+    color: var(--color00)
+  }
+
   @nest .expanded & {
-    color: inherit;
     opacity: 1;
     width: 100%;
   }
 }
 
 .inputButton {
+  composes: shape;
   max-width: 54px;
-  background-color: white;
+  background-color: var(--color00);
   position: relative;
   z-index: 10;
-  composes: shape;
   line-height: 1;
   display: flex;
   justify-content: center;
@@ -45,8 +48,12 @@
   transition-duration: 250ms;
 
   @nest .expanded & {
+    color: inherit;
     border-color: transparent;
     background-color: transparent;
+  }
 
+  @nest :global(.dark) .expanded & {
+    color: var(--color00)
   }
 }

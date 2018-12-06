@@ -1,0 +1,27 @@
+:root {
+  --color00: $COLOR_DEFAULT_WHITE; /* background */
+  --color01: $COLOR_DEFAULT_WHITESMOKE;
+  --color02: $COLOR_DEFAULT_LIGHTGRAY;
+  --color03: $COLOR_DEFAULT_IRON;
+  --color04: $COLOR_DEFAULT_LEAD;
+  --color05: $COLOR_DEFAULT_BLACK; /* foreground */
+
+  --colorTransparent: $COLOR_TRANSPARENT_WHITE;
+  --colorSemiTransparent: $COLOR_SEMI_TRANSPARENT_WHITE;
+
+  --colorWarning: $COLOR_WARNING_RED;
+}
+
+:global(.dark) {
+  --color00: $COLOR_DEFAULT_BLACK; /* background */
+  --color01: $COLOR_DEFAULT_LEAD;
+  --color02: $COLOR_DEFAULT_IRON;
+  --color03: $COLOR_DEFAULT_LIGHTGRAY;
+  --color04: $COLOR_DEFAULT_WHITESMOKE;
+  --color05: $COLOR_DEFAULT_WHITE; /* foreground */
+
+  --colorTransparent: $COLOR_TRANSPARENT_BLACK;
+  --colorSemiTransparent: $COLOR_SEMI_TRANSPARENT_BLACK;
+
+  --colorWarning: $COLOR_WARNING_RED;
+}
