@@ -20,10 +20,10 @@ const RULES = {
     exclude: /node_modules/,
     use: [
       LOADER.babel,
-      LOADER.eslint
-    ]
-  }
-}
+      LOADER.eslint,
+    ],
+  },
+};
 
 module.exports = {
   name: 'server',
@@ -35,28 +35,28 @@ module.exports = {
   output: {
     path: path.resolve(DIST_PATH, 'server'),
     filename: '[name].js',
-    libraryTarget: 'commonjs'
+    libraryTarget: 'commonjs',
   },
   module: {
     rules: [
       RULES.js,
-    ]
+    ],
   },
   optimization: {
-    minimizer: [new TerserWebpackPlugin()]
+    minimizer: [new TerserWebpackPlugin()],
   },
   resolve: {
     alias: {
       shared: path.resolve(ROOT_PATH, 'src', 'shared'),
     },
     extensions: ['.js'],
-    modules: [SERVER_PATH, 'node_modules']
+    modules: [SERVER_PATH, 'node_modules'],
   },
   plugins: [
     new webpack.DefinePlugin({
       ...DEFINE_ENV,
-      'global.GENTLY': false // Fixes issue https://github.com/felixge/node-formidable/issues/337
+      'global.GENTLY': false, // Fixes issue https://github.com/felixge/node-formidable/issues/337
     }),
   ],
   stats: STATS,
-}
+};

@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const SVGSpriteMapPlugin = require('svg-spritemap-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
@@ -30,30 +30,30 @@ const RULES = {
     exclude: /node_modules/,
     use: [
       LOADER.babel,
-      LOADER.eslint
-    ]
+      LOADER.eslint,
+    ],
   },
   css: {
     test: /\.css$/,
     use: [
       isDevelopment ? LOADER.style : MiniCSSExtractPlugin.loader,
       LOADER.css,
-      LOADER.postcss
-    ]
+      LOADER.postcss,
+    ],
   },
   html: {
     test: /\.html$/,
     use: [
-      LOADER.handlebars
-    ]
-  }
+      LOADER.handlebars,
+    ],
+  },
 };
 
-const DEV_SERVER = isDevelopment ? {
-  allowedHosts: process.env.ALLOWED_HOSTS.split(','),
-  before: function(app, server) {
+const DEV_SERVER = isDevelopment && {
+  before(app, server) {
     console.log(server.allowedHosts.map(host => `~ https://${host}:${process.env.PORT}`).join('\n'), '\n');
   },
+  allowedHosts: process.env.ALLOWED_HOSTS.split(','),
   compress: true,
   contentBase: DIST_PATH,
   historyApiFallback: true,
@@ -73,40 +73,40 @@ const DEV_SERVER = isDevelopment ? {
     },
   },
   stats: STATS,
-} : undefined;
+};
 
 module.exports = {
   name: 'client',
   mode: process.env.NODE_ENV,
   entry: {
-    app: path.resolve(CLIENT_PATH, 'entry.js')
+    app: path.resolve(CLIENT_PATH, 'entry.js'),
   },
   output: {
     path: path.resolve(DIST_PATH, 'client'),
     filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
-    publicPath: `/`
+    publicPath: '/',
   },
   devServer: DEV_SERVER,
   module: {
     rules: [
       RULES.jsx,
       RULES.css,
-      RULES.html
-    ]
+      RULES.html,
+    ],
   },
   resolve: {
     alias: {
       shared: path.resolve(ROOT_PATH, 'src', 'shared'),
     },
     extensions: ['.js', '.jsx', '.css'],
-    modules: [CLIENT_PATH, 'node_modules']
+    modules: [CLIENT_PATH, 'node_modules'],
   },
   plugins: [
     new webpack.DefinePlugin(DEFINE_ENV),
     new webpack.SourceMapDevToolPlugin({
       test: /\.(js|jsx)$/,
       exclude: /^spritemap/,
-      filename: '[file].map'
+      filename: '[file].map',
     }),
     new SVGSpriteMapPlugin({
       src: path.resolve(CLIENT_PATH, 'assets', 'icons', '**/*.svg'),
@@ -117,10 +117,10 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.resolve(CLIENT_PATH, 'entry.html.js'),
       inject: false,
-      minify: false
+      minify: false,
     }),
     isProduction ? new MiniCSSExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: '[name].[contenthash].css',
     }) : null,
     isDevelopment ? new webpack.NamedModulesPlugin() : null,
     isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
@@ -131,14 +131,14 @@ module.exports = {
       new TerserWebpackPlugin({
         sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin()
+      new OptimizeCSSAssetsPlugin(),
     ],
     splitChunks: {
       cacheGroups: {
         vendors: {
           name: 'vendors',
           test: /[\\/]node_modules[\\/].+(?<!css)$/,
-          chunks: 'all'
+          chunks: 'all',
         },
       },
     },

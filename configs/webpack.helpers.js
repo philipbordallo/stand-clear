@@ -1,39 +1,39 @@
 const path = require('path');
 const { CONFIGS_PATH } = require('./paths');
 
+const plugins = require('./postcss.plugins');
+
 
 const LOADER = {
   babel: {
-    loader: 'babel-loader'
+    loader: 'babel-loader',
   },
   css: {
     loader: 'css-loader',
     options: {
       modules: true,
       importLoaders: 1,
-      localIdentName: '[folder]__[local]__[hash:base64:5]'
-    }
+      localIdentName: '[folder]__[local]__[hash:base64:5]',
+    },
   },
   eslint: {
     loader: 'eslint-loader',
     options: {
-      configFile: path.resolve(CONFIGS_PATH, 'eslint.config.js')
-    }
+      configFile: path.resolve(CONFIGS_PATH, 'eslint.config.js'),
+    },
   },
   handlebars: {
-    loader: 'handlebars-loader'
+    loader: 'handlebars-loader',
   },
   postcss: {
     loader: 'postcss-loader',
     options: {
-      config: {
-        path: path.resolve(CONFIGS_PATH, 'postcss.config.js')
-      }
-    }
+      plugins
+    },
   },
   style: {
     loader: 'style-loader',
-  }
+  },
 };
 
 const DEFINE_ENV = {
@@ -45,7 +45,7 @@ const STATS = {
   children: false,
   chunks: false,
   modules: false,
-  timings: true
+  timings: true,
 };
 
 module.exports = {
