@@ -50,7 +50,6 @@ const RULES = {
 };
 
 module.exports = {
-  ...isDevelopment ? { devServer: DEV_SERVER } : null,
   name: 'client',
   mode: process.env.NODE_ENV,
   entry: {
@@ -61,6 +60,7 @@ module.exports = {
     filename: isProduction ? '[name].[contenthash].bundle.js' : '[name].bundle.js',
     publicPath: '/',
   },
+  devServer: isDevelopment ? DEV_SERVER : {},
   module: {
     rules: [
       RULES.jsx,

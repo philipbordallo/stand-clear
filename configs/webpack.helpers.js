@@ -4,6 +4,7 @@ const { CONFIGS_PATH, DIST_PATH } = require('./paths');
 
 const plugins = require('./postcss.plugins');
 
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const LOADER = {
   babel: {
@@ -49,7 +50,7 @@ const STATS = {
   timings: true,
 };
 
-const DEV_SERVER = {
+const DEV_SERVER = isDevelopment && {
   before(app, server) {
     console.log(server.allowedHosts.map(host => `~ https://${host}:${process.env.PORT}`).join('\n'), '\n');
   },
