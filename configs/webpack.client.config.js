@@ -6,6 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const {
   LOADER,
@@ -96,6 +97,10 @@ module.exports = {
     isProduction ? new MiniCSSExtractPlugin({
       filename: '[name].[contenthash].css',
     }) : null,
+    new CopyWebpackPlugin([{
+      from: path.resolve(CLIENT_PATH, 'public'),
+      to: path.resolve(DIST_PATH, 'client'),
+    }]),
     isDevelopment ? new webpack.NamedModulesPlugin() : null,
     isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
   ].filter(Boolean),
