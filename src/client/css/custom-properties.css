@@ -10,6 +10,12 @@
   --colorSemiTransparent: $COLOR_SEMI_TRANSPARENT_WHITE;
 
   --colorWarning: $COLOR_WARNING_RED;
+  --colorLink: $COLOR_DEFAULT_BLUE;
+
+  --colorHeader: $COLOR_BRAND_PRIMARY;
+
+  --containerPadding: $PADDING_LARGE;
+  --containerMaxWidth: calc($BREAKPOINT_LARGE - 2 * $PADDING_LARGE);
 }
 
 :global(.dark) {
@@ -24,4 +30,5 @@
   --colorSemiTransparent: $COLOR_SEMI_TRANSPARENT_BLACK;
 
   --colorWarning: $COLOR_WARNING_RED;
+  --colorLink: $COLOR_DEFAULT_LIGHTBLUE;
 }

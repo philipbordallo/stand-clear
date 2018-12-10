@@ -1,11 +1,19 @@
 .title {
   composes: transparentBackground from 'css/default/styles';
-  display: flex;
-  align-items: baseline;
   position: sticky;
   top: 0;
   padding: 0.5rem 0;
   margin-bottom: 0;
+}
+
+.titleContainer {
+  composes: container from 'css/default/styles';
+  display: flex;
+  align-items: baseline;
+}
+
+.container {
+  composes: container from 'css/default/styles';
 }
 
 .subtitle {

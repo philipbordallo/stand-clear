@@ -4,11 +4,6 @@
   border: 1px solid var(--color02);
   padding: 0.5rem;
   border-radius: 1rem;
-
-  @nest :global(.dark) & {
-    border-color: transparent;
-    background-color: var(--color01)
-  }
 }
 
 .icon {

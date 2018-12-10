@@ -35,11 +35,15 @@ function CurrentStation(props) {
     return (
       <div key={ direction }>
         <h2 className={ Classes.title }>
-          { currentDirection.name }
-          <span className={ Classes.subtitle }>Platforms { directionPlatforms }</span>
-          <span className={ Classes.abbreviation }>{ abbreviation }</span>
+          <div className={ Classes.titleContainer }>
+            { currentDirection.name }
+            <span className={ Classes.subtitle }>Platforms { directionPlatforms }</span>
+            <span className={ Classes.abbreviation }>{ abbreviation }</span>
+          </div>
         </h2>
-        { currentDirection.list.map(renderDepartureItem) }
+        <div className={ Classes.container }>
+          { currentDirection.list.map(renderDepartureItem) }
+        </div>
       </div>
     );
   }
@@ -50,7 +54,7 @@ function CurrentStation(props) {
         { hasDepartures ? Object.keys(departures).map(renderDepartures) : null }
 
         <InformationCallout>
-          Information accurate as of { time } on { date } for { name } Station.
+          Accurate as of { time } on { date } for { name } Station.
         </InformationCallout>
       </div>
     );

@@ -1,7 +1,14 @@
-.title {
-  text-transform: uppercase;
-  letter-spacing: .01em;
-  font-weight: 700;
+.container {
+  max-width: var(--containerMaxWidth);
+  margin: 0 auto;
+  padding: 0 var(--containerPadding);
+
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(var(--containerPadding), env(safe-area-inset-left));
+      padding-right: max(var(--containerPadding), env(safe-area-inset-right));
+    }
+  }
 }
 
 .transparentBackground {

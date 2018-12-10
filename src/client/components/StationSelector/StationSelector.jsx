@@ -69,7 +69,6 @@ function StationSelector(props) {
           Find Closest Station
         </Button>
 
-
         <SearchInput
           onClear={ handleClear }
           onChange={ handleChange }

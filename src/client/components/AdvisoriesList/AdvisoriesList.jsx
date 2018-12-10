@@ -39,14 +39,16 @@ function AdvisoriesList(props) {
 
   return (
     <div>
-      <p>
-        { date } { time }
-      </p>
-      <div>
-        { list.map(renderAdvisory) }
+      <div className={ Classes.container }>
+        <p>
+          { date } { time }
+        </p>
+        <div>
+          { list.map(renderAdvisory) }
+        </div>
       </div>
       <InformationCallout>
-        For more inforamtion check <Link to="https://twitter.com/SFBARTalert" type="external">@SFBARTalert</Link>.
+        For more information check <Link to="https://twitter.com/SFBARTalert" type="external">@SFBARTalert</Link>.
       </InformationCallout>
     </div>
   );

@@ -1,0 +1,7 @@
+.root {
+  composes: container from 'css/default/styles';
+}
+
+.title {
+  margin: 0;
+}

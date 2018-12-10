@@ -1,3 +1,7 @@
+.container {
+  composes: container from 'css/default/styles';
+}
+
 .advisory {
   display: flex;
   margin-bottom: 1rem;

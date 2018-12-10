@@ -1,8 +1,9 @@
 .root {
-  padding-top: .5rem;
+  composes: container from 'css/default/styles';
 }
 
 .actionBar {
+  margin-top: .5rem;
   display: flex;
   margin-bottom: 1rem;
   position: relative;

@@ -14,7 +14,11 @@ function Page(props) {
     <ErrorBoundary>
       <main className={ Classes.root }>
         <div className={ Classes.content }>
-          <h1 className={ Classes.title }>{ title }</h1>
+          <h1 className={ Classes.title }>
+            <div className={ Classes.titleContainer }>
+              { title }
+            </div>
+          </h1>
           { children }
         </div>
         <Navigation />

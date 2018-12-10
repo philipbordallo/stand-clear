@@ -33,7 +33,9 @@ function Navigation(props) {
 
   return (
     <nav className={ Classes.root }>
-      { navigation.map(renderNavLinks) }
+      <div className={ Classes.container }>
+        { navigation.map(renderNavLinks) }
+      </div>
     </nav>
   );
 }
