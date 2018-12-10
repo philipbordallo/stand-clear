@@ -1,8 +1,14 @@
+const path = require('path');
+
 const autoprefixer = require('autoprefixer');
+const colormin = require('postcss-colormin').default;
+const calc = require('postcss-calc');
+const reduceInitial = require('postcss-reduce-initial');
 const presetENV = require('postcss-preset-env');
 const simpleVars = require('postcss-simple-vars');
 const fontSmoothing = require('postcss-font-smoothing');
 
+const { CLIENT_PATH } = require('./paths');
 
 module.exports = (loader) => {
   // Get tokens to auto reload
@@ -11,9 +17,18 @@ module.exports = (loader) => {
   delete require.cache[tokens];
 
   return [
-    autoprefixer({
-      grid: true,
-      cascade: false,
+    presetENV({
+      autoprefixer: false,
+      stage: 3,
+      features: {
+        'nesting-rules': true,
+        'custom-media-queries': true,
+        'custom-properties': {
+          importFrom: path.resolve(CLIENT_PATH, 'css', 'custom-properties.css'),
+        },
+        'any-link-pseudo-class': true,
+        'system-ui-font-family': true,
+      },
     }),
 
     simpleVars({
@@ -22,16 +37,16 @@ module.exports = (loader) => {
       },
     }),
 
-    presetENV({
-      autoprefixer: false,
-      stage: 3,
-      features: {
-        'nesting-rules': true,
-        'custom-media-queries': true,
-        'system-ui-font-family': true,
-      },
+    fontSmoothing(),
+
+    autoprefixer({
+      grid: true,
+      cascade: false,
     }),
 
-    fontSmoothing(),
+    // cssnano handled by optimize-css-assets-webpack-plugin
+    reduceInitial(),
+    colormin(),
+    calc(),
   ];
 };
