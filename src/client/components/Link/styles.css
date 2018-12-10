@@ -1,0 +1,9 @@
+.root {
+  &:any-link {
+    color: var(--colorLink);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

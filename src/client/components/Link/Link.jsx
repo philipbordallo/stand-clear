@@ -6,6 +6,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import noop from 'utilities/noop';
 
+import Classes from './styles';
+
 
 function Link(props) {
   const {
@@ -19,6 +21,9 @@ function Link(props) {
   const isNative = type === 'native';
   const isExternal = type === 'external';
 
+  let linkClassName = Classes.root;
+  if (className) linkClassName += ` ${className}`;
+
   if (isNative || isExternal) {
     const externalProps = isExternal
       ? {
@@ -29,7 +34,7 @@ function Link(props) {
     return (
       <a
         href={ to }
-        className={ className }
+        className={ linkClassName }
         onClick={ onClick }
         { ...externalProps }
       >
@@ -39,7 +44,7 @@ function Link(props) {
   }
 
   return (
-    <RouterLink to={ to } className={ className } onClick={ onClick }>
+    <RouterLink to={ to } className={ linkClassName } onClick={ onClick }>
       { children }
     </RouterLink>
   );
