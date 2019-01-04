@@ -57,6 +57,7 @@
     "postcss-calc": "^7.0.1",
     "postcss-colormin": "^4.0.2",
     "postcss-font-smoothing": "^0.1.0",
+    "postcss-font-weights": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.4.0",
     "postcss-reduce-initial": "^4.0.2",

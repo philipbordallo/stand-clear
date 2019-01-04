@@ -7,6 +7,7 @@ const reduceInitial = require('postcss-reduce-initial');
 const presetENV = require('postcss-preset-env');
 const simpleVars = require('postcss-simple-vars');
 const fontSmoothing = require('postcss-font-smoothing');
+const fontWeights = require('postcss-font-weights');
 
 const { CLIENT_PATH } = require('./paths');
 
@@ -38,6 +39,7 @@ module.exports = (loader) => {
     }),
 
     fontSmoothing(),
+    fontWeights(),
 
     autoprefixer({
       grid: true,

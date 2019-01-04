@@ -10,9 +10,10 @@
   --colorSemiTransparent: $COLOR_SEMI_TRANSPARENT_WHITE;
 
   --colorWarning: $COLOR_WARNING_RED;
-  --colorLink: $COLOR_DEFAULT_BLUE;
+  --colorLink: $COLOR_BRAND_PRIMARY;
 
   --colorHeader: $COLOR_BRAND_PRIMARY;
+  --colorButton: $COLOR_BRAND_ALT;
 
   --containerPadding: $PADDING_LARGE;
   --containerMaxWidth: calc($BREAKPOINT_LARGE - 2 * $PADDING_LARGE);

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500,700');
 
 html {
   box-sizing: border-box;
@@ -40,6 +40,11 @@ button {
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem $COLOR_BRAND_FOCUS;
 }
 
 :global(#application) {
