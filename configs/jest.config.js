@@ -28,7 +28,7 @@ module.exports = {
         '<rootDir>/src/',
       ],
       moduleNameMapper: {
-        './styles': 'identity-obj-proxy'
+        './styles': 'identity-obj-proxy',
       },
       rootDir: ROOT_PATH,
       roots: [
@@ -49,6 +49,6 @@ module.exports = {
         '<rootDir>/src/server/',
       ],
       setupFiles: SETUP_FILES,
-    }
-  ]
+    },
+  ],
 };

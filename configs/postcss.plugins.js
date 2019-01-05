@@ -1,9 +1,6 @@
 const path = require('path');
 
-const autoprefixer = require('autoprefixer');
-const colormin = require('postcss-colormin').default;
-const calc = require('postcss-calc');
-const reduceInitial = require('postcss-reduce-initial');
+const cssnano = require('cssnano');
 const presetENV = require('postcss-preset-env');
 const simpleVars = require('postcss-simple-vars');
 const fontSmoothing = require('postcss-font-smoothing');
@@ -17,13 +14,24 @@ module.exports = (loader) => {
   loader.addDependency(tokens);
   delete require.cache[tokens];
 
+  const setSimpleVars = simpleVars({
+    variables() {
+      return require(tokens); // eslint-disable-line global-require
+    },
+  });
+
   return [
     presetENV({
-      autoprefixer: false,
+      autoprefixer: {
+        grid: true,
+        cascade: false,
+      },
       stage: 3,
+      insertBefore: {
+        'media-query-ranges': setSimpleVars,
+      },
       features: {
         'nesting-rules': true,
-        'custom-media-queries': true,
         'custom-properties': {
           importFrom: path.resolve(CLIENT_PATH, 'css', 'custom-properties.css'),
         },
@@ -31,24 +39,12 @@ module.exports = (loader) => {
         'system-ui-font-family': true,
       },
     }),
-
-    simpleVars({
-      variables() {
-        return require(tokens);
-      },
-    }),
-
     fontSmoothing(),
     fontWeights(),
-
-    autoprefixer({
-      grid: true,
-      cascade: false,
+    cssnano({ // also handled by optimize-css-assets-webpack-plugin
+      preset: ['default', {
+        normalizeWhitespace: false,
+      }],
     }),
-
-    // cssnano handled by optimize-css-assets-webpack-plugin
-    reduceInitial(),
-    colormin(),
-    calc(),
   ];
 };
