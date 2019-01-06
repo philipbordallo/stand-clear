@@ -33,7 +33,7 @@ function CurrentStation(props) {
     const directionPlatforms = Array.from(currentDirection.platforms).join(', ');
 
     return (
-      <div key={ direction }>
+      <div className={ Classes.root } key={ direction }>
         <h2 className={ Classes.title }>
           <div className={ Classes.titleContainer }>
             { currentDirection.name }

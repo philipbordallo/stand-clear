@@ -37,6 +37,7 @@ Button.propTypes = {
   type: PT.oneOf([
     'primary',
     'secondary',
+    'text',
   ]),
   disabled: PT.bool,
 };

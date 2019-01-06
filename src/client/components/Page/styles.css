@@ -12,12 +12,11 @@
 .title {
   text-transform: uppercase;
   letter-spacing: .01em;
-  font-weight: 700;
-  margin-bottom: 0;
+  font-weight: bold;
   background-color: var(--colorHeader);
   color: var(--color00);
   line-height: 1;
-  padding: .5rem 0;
+  padding: 1rem 0;
 }
 
 .titleContainer {

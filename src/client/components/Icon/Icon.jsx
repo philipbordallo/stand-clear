@@ -1,13 +1,19 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import Classes from './styles';
+
+
 function Icon(props) {
   const { size, name, className } = props;
+
+  let classNames = Classes.root;
+  if (className) classNames += ` ${className}`;
 
   const href = `#icon-${name}`;
 
   return (
-    <svg className={ className } width={ size } height={ size } fill="currentColor">
+    <svg className={ classNames } width={ size } height={ size } fill="currentColor">
       <use
         href={ href }
         xlinkHref={ href }

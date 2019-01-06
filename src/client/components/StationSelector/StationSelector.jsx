@@ -4,8 +4,10 @@ import PT from 'prop-types';
 import ReactRouterPT from 'propTypes/ReactRouterPT';
 
 import { withRouter } from 'react-router-dom';
+import collectStationsByAlpha from 'utilities/collectStationsByAlpha';
 
 import Button from 'components/Button';
+import Icon from 'components/Icon';
 import Link from 'components/Link';
 import SearchInput from 'components/SearchInput';
 
@@ -14,22 +16,10 @@ import STATION_LIST from 'shared/meta/STATION_LIST';
 import Classes from './styles';
 
 
-function renderStations(station) {
-  const { shortName, name, abbreviation } = station;
-
-  const url = `/station/${abbreviation.toLowerCase()}`;
-
-  return (
-    <Link key={ abbreviation } to={ url } className={ Classes.link } title={ name }>
-      { shortName }
-    </Link>
-  );
-}
-
 function StationSelector(props) {
   const { getClosestStation, closestStation, history } = props;
+
   const [searchValue, setSearchValue] = useState('');
-  const [isSearchExpanded, toggleSearchExpanded] = useState(false);
 
   useEffect(() => {
     if (closestStation.abbreviation) {
@@ -37,6 +27,16 @@ function StationSelector(props) {
       history.push(`/station/${station}`);
     }
   }, [closestStation.abbreviation]);
+
+  const stations = STATION_LIST
+    .filter((station) => {
+      const { name, shortName, city } = station;
+      const searchValueRegExp = new RegExp(searchValue.toLowerCase().trim(), 'g');
+      const found = `${name.toLowerCase()} ${shortName.toLowerCase()} ${city.toLowerCase()}`
+        .match(searchValueRegExp);
+      return found && found.length > 0;
+    })
+    .reduce(collectStationsByAlpha, {});
 
   const handleClick = () => {
     getClosestStation();
@@ -50,13 +50,26 @@ function StationSelector(props) {
     setSearchValue('');
   };
 
-  const stationFilter = (station = {}) => {
-    const { name, shortName, city } = station;
-    const searchValueRegExp = new RegExp(searchValue.toLowerCase().trim(), 'g');
-    const found = `${name.toLowerCase()} ${shortName.toLowerCase()} ${city.toLowerCase()}`
-      .match(searchValueRegExp);
-    return found && found.length > 0;
+  const renderStations = (station) => {
+    const { shortName, name, abbreviation } = station;
+
+    const url = `/station/${abbreviation.toLowerCase()}`;
+
+    return (
+      <Link key={ abbreviation } to={ url } className={ Classes.link } title={ name }>
+        { shortName }
+      </Link>
+    );
   };
+
+  const renderAlphaGroup = (group, index) => (
+    <div className={ Classes.group } key={ index }>
+      <h2 className={ Classes.groupTitle }>{ group }</h2>
+      { stations[group].map(renderStations) }
+    </div>
+  );
+
+  const stationsContent = Object.keys(stations).map(renderAlphaGroup);
 
   return (
     <div className={ Classes.root }>
@@ -64,21 +77,18 @@ function StationSelector(props) {
         <Button
           className={ Classes.button }
           onClick={ handleClick }
-          disabled={ isSearchExpanded }
         >
-          Find Closest Station
+          <Icon name="direction-filled" size="24" /> Find Closest Station
         </Button>
-
         <SearchInput
           onClear={ handleClear }
           onChange={ handleChange }
           searchValue={ searchValue }
-          isSearchExpanded={ isSearchExpanded }
-          toggleSearchExpanded={ toggleSearchExpanded }
         />
       </div>
+
       <div className={ Classes.links }>
-        { STATION_LIST.filter(stationFilter).map(renderStations) }
+        { stationsContent }
       </div>
     </div>
   );

@@ -1,41 +1,39 @@
 .root {
-  outline: none;
   text-decoration: none;
-  border-radius: 2rem;
+  border-radius: 5px;
   border-style: solid;
   border-width: 1px;
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   text-align: center;
   font-smoothing: antialiased;
-  transition-property: background-color, border, color;
+  font-weight: medium;
+  text-transform: uppercase;
+  transition-property: border-color, background-color;
   transition-duration: 250ms;
-  transition-timing-function: ease-in;
-
-  &:focus {
-    position: relative;
-    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
-  }
 }
 
 .primary {
   color: var(--color00);
-  border-color: var(--color05);
-  background-color: var(--color05);
-
-  &:hover {
-    background-color: var(--color00);
-    border-color: currentColor;
-    color: var(--color05);
-  }
+  border-color: var(--colorButton);
+  background-color: var(--colorButton);
 }
 
 .secondary {
-  color: var(--color05);
+  color: var(--colorButton);
   border-color: currentColor;
 
   &:hover {
-    background-color: var(--color05);
-    border-color: var(--color05);
-    color: var(--color00);
+    background-color: $COLOR_BRAND_ALT_LIGHT;
+  }
+}
+
+.text {
+  color: var(--colorButton);
+  border-color: transparent;
+  background-color: transparent;
+
+  &:hover {
+    border-color: var(--color01);
+    background-color: var(--color01);
   }
 }

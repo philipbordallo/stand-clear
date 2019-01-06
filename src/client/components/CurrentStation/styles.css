@@ -1,3 +1,7 @@
+.root {
+  margin-top: -1rem;
+}
+
 .title {
   composes: transparentBackground from 'css/default/styles';
   position: sticky;

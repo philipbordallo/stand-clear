@@ -1,59 +1,41 @@
 .root {
-  width: 15%;
   display: flex;
-}
-
-.shape {
-  border: 1px solid var(--color05);
-  border-radius: 5px;
+  position: relative;
 }
 
 .input {
+  appearance: none;
   color: var(--color05);
-  composes: shape;
+  border: 1px solid var(--color05);
+  border-radius: 5px;
+  background-color: transparent;
   padding: .5rem;
-  width: 15%;
-  position: absolute;
-  z-index: 2;
   right: 0;
   padding-right: 42px;
-  height: 100%;
-  opacity: 0;
-  transition-property: width, opacity;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  height: 42px;
+  width: 100%;
+  position: relative;
+  z-index: 4;
 
-  @nest :global(.dark) & {
-    color: var(--color00)
-  }
-
-  @nest .expanded & {
-    opacity: 1;
-    width: 100%;
+  &::-webkit-search-cancel-button {
+    display: none;
   }
 }
 
-.inputButton {
-  composes: shape;
-  max-width: 54px;
-  background-color: var(--color00);
-  position: relative;
+.icon {
+  border-color: transparent;
+  background-color: transparent;
+  border-radius: 0 5px 5px 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 42px;
   z-index: 10;
-  line-height: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  transition-property: border-color;
-  transition-duration: 250ms;
 
-  @nest .expanded & {
-    color: inherit;
-    border-color: transparent;
-    background-color: transparent;
-  }
-
-  @nest :global(.dark) .expanded & {
-    color: var(--color00)
+  & > * {
+    pointer-events: none;
   }
 }

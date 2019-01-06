@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 
 import Icon from 'components/Icon';
@@ -11,51 +11,43 @@ function SearchInput(props) {
     searchValue,
     onChange,
     onClear,
-    isSearchExpanded,
-    toggleSearchExpanded,
   } = props;
 
-  const inputRef = useRef(null);
-
   const handleClick = () => {
-    if (isSearchExpanded) {
-      onClear();
-    }
-    else {
-      inputRef.current.focus();
-    }
-
-    toggleSearchExpanded(prevIsSearchExpanded => !prevIsSearchExpanded);
+    onClear();
   };
 
-  let rootClassName = Classes.root;
-  if (isSearchExpanded) rootClassName += ` ${Classes.expanded}`;
+  const renderIcon = () => {
+    if (searchValue) {
+      return (
+        <button
+          type="button"
+          className={ Classes.icon }
+          onClick={ handleClick }
+        >
+          <Icon name="close" size="30" />
+        </button>
+      );
+    }
 
-  const iconName = isSearchExpanded
-    ? 'close'
-    : 'search';
-
-  const iconSize = isSearchExpanded
-    ? '36'
-    : '30';
+    return (
+      <div
+        className={ Classes.icon }
+      >
+        <Icon name="search" size="30" />
+      </div>
+    );
+  };
 
   return (
-    <div className={ rootClassName }>
+    <div className={ Classes.root }>
       <input
-        ref={ inputRef }
         className={ Classes.input }
-        type="text"
+        type="search"
         onChange={ onChange }
         value={ searchValue }
-        tabIndex={ isSearchExpanded ? 0 : -1 }
       />
-      <button
-        type="button"
-        className={ Classes.inputButton }
-        onClick={ handleClick }
-      >
-        <Icon name={ iconName } size={ iconSize } />
-      </button>
+      { renderIcon() }
     </div>
   );
 }
@@ -63,8 +55,6 @@ SearchInput.propTypes = {
   onClear: PT.func.isRequired,
   onChange: PT.func.isRequired,
   searchValue: PT.string.isRequired,
-  isSearchExpanded: PT.bool.isRequired,
-  toggleSearchExpanded: PT.func.isRequired,
 };
 
 export default SearchInput;
