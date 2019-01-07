@@ -25,8 +25,20 @@ function CurrentDeparture(props) {
   if (minutes === 1) departureTime = `${minutes} minute`;
   if (minutes === 0) departureTime = COPY.leaving;
 
-  let iconClassNames = Classes.icon;
-  if (minutes === 0) iconClassNames += ` ${Classes.iconLeaving}`;
+  const leavingContent = minutes === 0
+    ? (
+      <div className={ Classes.leaving }>
+        <div className={ Classes.leavingUnderline } />
+      </div>
+    )
+    : null;
+
+  const departureTimeContent = (
+    <span className={ Classes.departureTime }>
+      { departureTime }
+      { leavingContent }
+    </span>
+  );
 
   const isDelayedContent = delay > 0
     ? (
@@ -40,13 +52,13 @@ function CurrentDeparture(props) {
 
   return (
     <div key={ departureID } className={ Classes.root }>
-      <div className={ iconClassNames } style={ iconStyle } title={ color } />
+      <div className={ Classes.icon } style={ iconStyle } title={ color } />
       <div className={ Classes.information }>
         <h3 className={ Classes.title }>
           { name }
         </h3>
         <div>
-          { departureTime } { isDelayedContent } – { carLength }
+          { departureTimeContent } { isDelayedContent } – { carLength }
         </div>
       </div>
     </div>
