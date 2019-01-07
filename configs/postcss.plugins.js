@@ -5,6 +5,7 @@ const presetENV = require('postcss-preset-env');
 const simpleVars = require('postcss-simple-vars');
 const fontSmoothing = require('postcss-font-smoothing');
 const fontWeights = require('postcss-font-weights');
+const stack = require('postcss-stack');
 
 const { CLIENT_PATH } = require('./paths');
 
@@ -41,6 +42,15 @@ module.exports = (loader) => {
     }),
     fontSmoothing(),
     fontWeights(),
+    stack({
+      list: [
+        'modal',
+        'navigation',
+        'sticky-header',
+        'input-controls',
+        'application',
+      ].reverse(),
+    }),
     cssnano({ // also handled by optimize-css-assets-webpack-plugin
       preset: ['default', {
         normalizeWhitespace: false,

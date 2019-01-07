@@ -22,7 +22,7 @@ function SearchInput(props) {
       return (
         <button
           type="button"
-          className={ Classes.icon }
+          className={ Classes.closeIcon }
           onClick={ handleClick }
         >
           <Icon name="close" size="30" />
@@ -32,7 +32,7 @@ function SearchInput(props) {
 
     return (
       <div
-        className={ Classes.icon }
+        className={ Classes.searchIcon }
       >
         <Icon name="search" size="30" />
       </div>

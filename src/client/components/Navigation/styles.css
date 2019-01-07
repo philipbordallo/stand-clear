@@ -1,6 +1,7 @@
 .root {
   composes: transparentBackground from 'css/default/styles';
   position: sticky;
+  z-index: stack('navigation');
   width: 100%;
   left: 0;
   right: 0;

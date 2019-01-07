@@ -5,6 +5,7 @@
 .title {
   composes: transparentBackground from 'css/default/styles';
   position: sticky;
+  z-index: stack('sticky-header');
   top: 0;
   padding: 0.5rem 0;
   margin-bottom: 0;

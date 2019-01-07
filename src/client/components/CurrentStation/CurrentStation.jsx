@@ -33,7 +33,7 @@ function CurrentStation(props) {
     const directionPlatforms = Array.from(currentDirection.platforms).join(', ');
 
     return (
-      <div className={ Classes.root } key={ direction }>
+      <div key={ direction }>
         <h2 className={ Classes.title }>
           <div className={ Classes.titleContainer }>
             { currentDirection.name }
@@ -50,7 +50,7 @@ function CurrentStation(props) {
 
   if (showContent) {
     return (
-      <div>
+      <div className={ Classes.root }>
         { hasDepartures ? Object.keys(departures).map(renderDepartures) : null }
 
         <InformationCallout>

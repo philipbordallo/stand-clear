@@ -10,6 +10,8 @@
 }
 
 .title {
+  min-height: 4rem;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: .01em;
   font-weight: bold;

@@ -15,7 +15,6 @@
   height: 42px;
   width: 100%;
   position: relative;
-  z-index: 4;
 
   &::-webkit-search-cancel-button {
     display: none;
@@ -30,11 +29,19 @@
   right: 0;
   height: 100%;
   width: 42px;
-  z-index: 10;
+  z-index: stack('input-controls');
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.searchIcon {
+  composes: icon;
+  pointer-events: none;
+}
+
+.closeIcon {
+  composes: icon;
   & > * {
     pointer-events: none;
   }
