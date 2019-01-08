@@ -34,6 +34,9 @@ function departuresReducer(state = INITIAL_STATE, action) {
         error: action.error,
       };
 
+    case ActionTypes.CLEAR_DEPARTURES:
+      return INITIAL_STATE;
+
     default:
       return state;
   }

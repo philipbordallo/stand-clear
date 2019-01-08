@@ -16,12 +16,16 @@ function DeparturesPage(props) {
 
   const [
     { departures },
-    { getDepartures, updateStationLink },
+    { getDepartures, updateStationLink, clearDepartures },
   ] = useRedux();
 
   useEffect(() => {
     updateStationLink(station);
     getDepartures(station);
+
+    return () => {
+      clearDepartures();
+    };
   }, [station]);
 
   const hasLoaded = !departures.isLoading && departures.hasLoaded;
