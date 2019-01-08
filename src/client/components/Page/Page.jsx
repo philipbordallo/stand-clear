@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PT from 'prop-types';
 
 import ErrorBoundary from 'components/ErrorBoundary';
 import Navigation from 'components/Navigation';
+
+import { useRedux } from 'hooks';
 
 import Classes from './styles';
 
 
 function Page(props) {
   const { children, title } = props;
+
+  const [, { getAdvisories }] = useRedux();
+
+  useEffect(() => {
+    getAdvisories();
+  }, []);
 
   return (
     <ErrorBoundary>

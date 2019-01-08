@@ -1,9 +1,6 @@
 import ActionTypes from 'actions/ActionTypes';
 
-import getTimestamp from 'utilities/getTimestamp';
-
 const INITIAL_STATE = {
-  timestamp: getTimestamp(),
   isLoading: false,
   hasLoaded: false,
   data: null,
@@ -15,7 +12,6 @@ function advisoriesReducer(state = INITIAL_STATE, action) {
     case ActionTypes.GET_ADVISORIES_START:
       return {
         ...state,
-        timestamp: getTimestamp(),
         isLoading: true,
         hasLoaded: false,
         data: INITIAL_STATE.data,

@@ -16,12 +16,8 @@ function DeparturesPage(props) {
 
   const [
     { departures },
-    { getAdvisories, getDepartures, updateStationLink },
+    { getDepartures, updateStationLink },
   ] = useRedux();
-
-  useEffect(() => {
-    getAdvisories();
-  }, []);
 
   useEffect(() => {
     updateStationLink(station);

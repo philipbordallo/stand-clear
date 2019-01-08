@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import ErrorPage from 'pages/ErrorPage';
 import Page from 'components/Page';
@@ -8,12 +8,7 @@ import { useRedux } from 'hooks';
 
 
 function AdvisoriesPage() {
-  const [{ advisories }, { getAdvisories }] = useRedux();
-
-  useEffect(() => {
-    getAdvisories();
-  }, []);
-
+  const [{ advisories }] = useRedux();
 
   if (advisories.hasError) {
     return (
