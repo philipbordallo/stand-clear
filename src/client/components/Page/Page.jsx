@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PT from 'prop-types';
 
 import ErrorBoundary from 'components/ErrorBoundary';
+import Meta from 'components/Meta';
 import Navigation from 'components/Navigation';
 
 import { useRedux } from 'hooks';
@@ -18,8 +19,13 @@ function Page(props) {
     getAdvisories();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <ErrorBoundary>
+      <Meta title={ title } />
       <main className={ Classes.root }>
         <div className={ Classes.content }>
           <h1 className={ Classes.title }>
