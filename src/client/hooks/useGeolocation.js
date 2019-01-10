@@ -1,4 +1,4 @@
-import { useMutationEffect, useReducer } from 'react';
+import { useLayoutEffect, useReducer } from 'react';
 
 import geolocationParser from 'parsers/geolocationParser';
 
@@ -77,7 +77,7 @@ function useGeolocation() {
     error,
   });
 
-  useMutationEffect(() => {
+  useLayoutEffect(() => {
     if (count > 0) {
       getGeolocationStart();
 
