@@ -2,7 +2,7 @@ import API from 'api';
 import STATION_LIST from 'shared/meta/STATION_LIST';
 
 import logger from 'utilities/logger';
-import currentStationParser from 'parsers/currentStationParser';
+import departuresParser from 'parsers/departuresParser';
 
 
 export const handler = (event, context, callback) => {
@@ -16,7 +16,7 @@ export const handler = (event, context, callback) => {
     logger(`Request => ${event.httpMethod} ${event.path}`);
     const endpoint = API.createEndpoint('etd', { orig });
 
-    API.request(endpoint, callback, currentStationParser);
+    API.request(endpoint, callback, departuresParser);
   }
   else {
     logger(`Request => ${event.httpMethod} ${event.path} NOT FOUND`);

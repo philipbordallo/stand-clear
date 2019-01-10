@@ -1,10 +1,15 @@
 import ActionTypes from 'actions/ActionTypes';
 
+import departuresGroupBy from './departuresGroupBy';
+
+
 const INITIAL_STATE = {
   isLoading: false,
   hasLoaded: false,
   data: null,
   error: null,
+  groupBy: 'direction',
+  departuresList: [],
 };
 
 function departuresReducer(state = INITIAL_STATE, action) {
@@ -23,7 +28,11 @@ function departuresReducer(state = INITIAL_STATE, action) {
         ...state,
         isLoading: false,
         hasLoaded: true,
-        data: action.data,
+        data: {
+          ...action.data,
+          list: action.data.list,
+          listGrouped: departuresGroupBy(action.data.list, state.groupBy),
+        },
       };
 
     case ActionTypes.GET_DEPARTURES_FAILURE:
@@ -32,6 +41,16 @@ function departuresReducer(state = INITIAL_STATE, action) {
         isLoading: false,
         hasLoaded: true,
         error: action.error,
+      };
+
+    case ActionTypes.GROUP_DEPARTURES:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          listGrouped: departuresGroupBy(state.data.list, action.groupBy),
+        },
+        groupBy: action.groupBy,
       };
 
     case ActionTypes.CLEAR_DEPARTURES:

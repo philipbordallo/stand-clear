@@ -16,7 +16,12 @@ function DeparturesPage(props) {
 
   const [
     { departures },
-    { getDepartures, updateStationLink, clearDepartures },
+    {
+      getDepartures,
+      updateStationLink,
+      clearDepartures,
+      groupDepartures,
+    },
   ] = useRedux();
 
   useEffect(() => {
@@ -42,6 +47,7 @@ function DeparturesPage(props) {
   return (
     <Page title={ hasLoaded ? departures.data.name : '' }>
       <CurrentStation
+        groupDepartures={ groupDepartures }
         showContent={ hasLoaded }
         { ...departures.data }
       />

@@ -1,4 +1,4 @@
-import currentStationParser from '../currentStationParser';
+import departuresParser from '../departuresParser';
 
 import DEPARTURES_BART_API from '__fixtures__/DEPARTURES_BART_API.fixture';
 import DEPARTURES_BART_API_EMPTY from '__fixtures__/DEPARTURES_BART_API_EMPTY.fixture';
@@ -21,7 +21,7 @@ const TESTS = [
     DEPARTURES_BART_API_EMPTY,
     {
       "abbreviation": "POWL",
-      "departures": {},
+      "list": [],
       "date": "11/20/2018",
       "name": "Powell St.",
       "time": "08:23:16 PM PST"
@@ -29,9 +29,9 @@ const TESTS = [
   ]
 ];
 
-describe('currentStationParser should', () => {
+describe('departuresParser should', () => {
   test.each(TESTS)('%s', (name, data, expectations) => {
-    const results = currentStationParser(data);
+    const results = departuresParser(data);
 
     expect(results).toEqual(expectations);
   });

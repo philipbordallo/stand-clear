@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import Button from 'components/Button';
 import CurrentDeparture from 'components/CurrentDeparture';
 import InformationCallout from 'components/InformationCallout';
 
@@ -14,11 +15,20 @@ function CurrentStation(props) {
     abbreviation,
     date,
     time,
-    departures,
+    listGrouped,
     name,
+    groupDepartures,
   } = props;
 
-  const hasDepartures = Object.keys(departures).length > 0;
+  const hasDepartures = Object.keys(listGrouped).length > 0;
+
+  const handleGroupByDirection = () => {
+    groupDepartures('direction');
+  };
+
+  const handleGroupByName = () => {
+    groupDepartures('name');
+  };
 
   function renderDepartureItem(departure) {
     const { departureID } = departure;
@@ -28,7 +38,7 @@ function CurrentStation(props) {
   }
 
   function renderDepartures(direction) {
-    const currentDirection = departures[direction];
+    const currentDirection = listGrouped[direction];
 
     const directionPlatforms = Array.from(currentDirection.platforms).join(', ');
 
@@ -51,7 +61,16 @@ function CurrentStation(props) {
   if (showContent) {
     return (
       <div className={ Classes.root }>
-        { hasDepartures ? Object.keys(departures).map(renderDepartures) : null }
+        <div className={ Classes.container }>
+          <Button type="primary" onClick={ handleGroupByDirection }>
+            By Direction
+          </Button>
+          <Button type="primary" onClick={ handleGroupByName }>
+            By Name
+          </Button>
+          <br />
+        </div>
+        { hasDepartures ? Object.keys(listGrouped).map(renderDepartures) : null }
 
         <InformationCallout>
           Accurate as of { time } on { date } for { name } Station.
@@ -63,12 +82,13 @@ function CurrentStation(props) {
   return null;
 }
 CurrentStation.propTypes = {
+  groupDepartures: PT.func.isRequired,
   showContent: PT.bool.isRequired,
   abbreviation: PT.string,
   date: PT.string,
   name: PT.string,
   time: PT.string,
-  departures: PT.shape({
+  listGrouped: PT.shape({
     northBound: DirectionPT,
     southBound: DirectionPT,
   }),
@@ -78,7 +98,7 @@ CurrentStation.defaultProps = {
   date: '',
   name: '',
   time: '',
-  departures: {},
+  listGrouped: {},
 };
 
 export default CurrentStation;
