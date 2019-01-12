@@ -1,0 +1,37 @@
+.root {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button {
+  padding: .25rem 1rem;
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid var(--colorButton);
+  text-transform: uppercase;
+
+  @nest .root:first-of-type & {
+    border-radius: 3px 0 0 3px;
+  }
+
+  @nest .root:last-of-type & {
+    border-right: none;
+    border-radius: 0 3px 3px 0;
+  }
+}
+
+.input:checked ~ .button {
+  color: var(--color00);
+  background-color: var(--colorButton);
+}
+
+.input:focus ~ .button {
+  box-shadow: 0 0 0 0.2rem $COLOR_BRAND_FOCUS;
+}
+
+.input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}

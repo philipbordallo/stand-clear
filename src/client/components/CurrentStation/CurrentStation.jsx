@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PT from 'prop-types';
 
-import Button from 'components/Button';
 import CurrentDeparture from 'components/CurrentDeparture';
+import GroupToggle from 'components/GroupToggle';
+import GroupToggleItem from 'components/GroupToggleItem';
 import InformationCallout from 'components/InformationCallout';
+import VisuallyHidden from 'components/VisuallyHidden';
 
 import { DirectionPT } from './propTypes';
 
 import Classes from './styles';
+
+
+const GROUP_TOGGLE_ITEMS = [
+  {
+    value: 'direction',
+    text: 'Direction',
+  },
+  {
+    value: 'name',
+    text: 'Name',
+  },
+  {
+    value: 'platform',
+    text: 'Platform',
+  },
+];
 
 function CurrentStation(props) {
   const {
@@ -22,53 +40,66 @@ function CurrentStation(props) {
 
   const hasDepartures = Object.keys(listGrouped).length > 0;
 
-  const handleGroupByDirection = () => {
-    groupDepartures('direction');
+  const [checked, setChecked] = useState('direction');
+
+  const handleChange = (event) => {
+    setChecked(event.target.value);
+    groupDepartures(event.target.value);
   };
 
-  const handleGroupByName = () => {
-    groupDepartures('name');
-  };
-
-  function renderDepartureItem(departure) {
+  const renderDepartureItem = (departure) => {
     const { departureID } = departure;
     return (
       <CurrentDeparture key={ departureID } { ...departure } />
     );
-  }
+  };
 
-  function renderDepartures(direction) {
-    const currentDirection = listGrouped[direction];
+  const renderDepartures = (groupBy) => {
+    const currentGroup = listGrouped[groupBy];
 
-    const directionPlatforms = Array.from(currentDirection.platforms).join(', ');
+    const platforms = Array.from(currentGroup.platforms);
+    const plural = platforms.length > 1 ? 's' : '';
+
+    const platformsContent = `Platform${plural} ${platforms.join(', ')}`;
 
     return (
-      <div key={ direction }>
+      <div key={ groupBy }>
         <h2 className={ Classes.title }>
           <div className={ Classes.titleContainer }>
-            { currentDirection.name }
-            <span className={ Classes.subtitle }>Platforms { directionPlatforms }</span>
+            { currentGroup.name }
+            <span className={ Classes.subtitle }>{ platformsContent }</span>
             <span className={ Classes.abbreviation }>{ abbreviation }</span>
           </div>
         </h2>
         <div className={ Classes.container }>
-          { currentDirection.list.map(renderDepartureItem) }
+          { currentGroup.list.map(renderDepartureItem) }
         </div>
       </div>
     );
-  }
+  };
+
+  const renderGroupToggleItem = (item) => {
+    const { value, text } = item;
+    return (
+      <GroupToggleItem
+        key={ value }
+        onChange={ handleChange }
+        name="groupBy"
+        checked={ checked === value }
+        value={ value }
+      >
+        <VisuallyHidden>Group Departures By</VisuallyHidden> { text }
+      </GroupToggleItem>
+    );
+  };
 
   if (showContent) {
     return (
-      <div className={ Classes.root }>
+      <div>
         <div className={ Classes.container }>
-          <Button type="primary" onClick={ handleGroupByDirection }>
-            By Direction
-          </Button>
-          <Button type="primary" onClick={ handleGroupByName }>
-            By Name
-          </Button>
-          <br />
+          <GroupToggle>
+            { GROUP_TOGGLE_ITEMS.map(renderGroupToggleItem) }
+          </GroupToggle>
         </div>
         { hasDepartures ? Object.keys(listGrouped).map(renderDepartures) : null }
 

@@ -46,6 +46,7 @@ function SearchInput(props) {
         type="search"
         onChange={ onChange }
         value={ searchValue }
+        aria-label="Search Stations"
       />
       { renderIcon() }
     </div>
