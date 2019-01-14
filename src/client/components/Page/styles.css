@@ -19,6 +19,11 @@
   color: var(--color00);
   line-height: 1;
   padding: 1rem 0;
+
+  @media (width <= $BREAKPOINT_EXTRA_SMALL) {
+    min-height: 3.75rem;
+    font-size: 1.75rem;
+  }
 }
 
 .titleContainer {

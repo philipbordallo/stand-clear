@@ -37,8 +37,8 @@ function departuresGroupBy(data, key) {
     };
   }, {});
 
-  // If grouping by direction, sort by departure time
-  if (key === 'direction') {
+  // If grouping by direction or platform, sort by departure time
+  if (['direction', 'platform'].includes(key)) {
     return Object.keys(departures).reduce((collection, item) => ({
       ...collection,
       [item]: {

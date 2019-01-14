@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import PT from 'prop-types';
 
-import CurrentDeparture from 'components/CurrentDeparture';
+import CurrentDepartures from 'components/CurrentDepartures';
 import GroupToggle from 'components/GroupToggle';
 import GroupToggleItem from 'components/GroupToggleItem';
 import InformationCallout from 'components/InformationCallout';
 import VisuallyHidden from 'components/VisuallyHidden';
 
-import { DirectionPT } from './propTypes';
+import { CurrentDepartureShape } from 'components/CurrentDeparture/propTypes';
 
 import Classes from './styles';
 
@@ -40,41 +40,25 @@ function CurrentStation(props) {
 
   const hasDepartures = Object.keys(listGrouped).length > 0;
 
-  const [checked, setChecked] = useState('direction');
+  const [groupBy, setGroupBy] = useState('direction');
 
   const handleChange = (event) => {
-    setChecked(event.target.value);
+    setGroupBy(event.target.value);
     groupDepartures(event.target.value);
   };
 
-  const renderDepartureItem = (departure) => {
-    const { departureID } = departure;
-    return (
-      <CurrentDeparture key={ departureID } { ...departure } />
-    );
-  };
-
-  const renderDepartures = (groupBy) => {
-    const currentGroup = listGrouped[groupBy];
-
-    const platforms = Array.from(currentGroup.platforms);
-    const plural = platforms.length > 1 ? 's' : '';
-
-    const platformsContent = `Platform${plural} ${platforms.join(', ')}`;
+  const renderDepartures = (group) => {
+    const currentGroup = listGrouped[group];
 
     return (
-      <div key={ groupBy }>
-        <h2 className={ Classes.title }>
-          <div className={ Classes.titleContainer }>
-            { currentGroup.name }
-            <span className={ Classes.subtitle }>{ platformsContent }</span>
-            <span className={ Classes.abbreviation }>{ abbreviation }</span>
-          </div>
-        </h2>
-        <div className={ Classes.container }>
-          { currentGroup.list.map(renderDepartureItem) }
-        </div>
-      </div>
+      <CurrentDepartures
+        key={ group }
+        name={ currentGroup.name }
+        platforms={ currentGroup.platforms }
+        list={ currentGroup.list }
+        groupBy={ groupBy }
+        abbreviation={ abbreviation }
+      />
     );
   };
 
@@ -85,7 +69,7 @@ function CurrentStation(props) {
         key={ value }
         onChange={ handleChange }
         name="groupBy"
-        checked={ checked === value }
+        checked={ groupBy === value }
         value={ value }
       >
         <VisuallyHidden>Group Departures By</VisuallyHidden> { text }
@@ -119,10 +103,15 @@ CurrentStation.propTypes = {
   date: PT.string,
   name: PT.string,
   time: PT.string,
-  listGrouped: PT.shape({
-    northBound: DirectionPT,
-    southBound: DirectionPT,
-  }),
+  listGrouped: PT.objectOf(
+    PT.shape({
+      name: PT.string.isRequired,
+      platforms: PT.instanceOf(Set).isRequired,
+      list: PT.arrayOf(
+        PT.shape(CurrentDepartureShape),
+      ),
+    }),
+  ),
 };
 CurrentStation.defaultProps = {
   abbreviation: '',

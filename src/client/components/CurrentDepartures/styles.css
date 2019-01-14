@@ -1,0 +1,54 @@
+.container {
+  composes: container from 'css/default/styles';
+}
+
+.title {
+  composes: transparentBackground from 'css/default/styles';
+  position: sticky;
+  z-index: stack('sticky-header');
+  top: 0;
+  padding: 0.5rem 0;
+  margin-bottom: 0;
+}
+
+.titleContainer {
+  composes: container from 'css/default/styles';
+  display: flex;
+  align-items: baseline;
+}
+
+.subtitle {
+  font-weight: normal;
+  font-size: 1rem;
+  margin: 0 .5rem;
+  text-transform: uppercase;
+  display: flex;
+
+  @media (width <= $BREAKPOINT_EXTRA_SMALL) {
+    font-size: .875rem;
+  }
+}
+
+.subtitlePlatform {
+  display: none;
+
+  @media (width > $BREAKPOINT_EXTRA_SMALL) {
+    display: inline-block;
+  }
+}
+
+.subtitlePlat {
+  display: none;
+
+  @media (width <= $BREAKPOINT_EXTRA_SMALL) {
+    display: inline-block;
+  }
+}
+
+.abbreviation {
+  background-color: var(--color01);
+  font-size: 1.25rem;
+  font-weight: normal;
+  padding: 0 .25em;
+  margin-left: auto;
+}

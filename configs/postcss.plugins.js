@@ -46,8 +46,8 @@ module.exports = (loader) => {
       list: [
         'modal',
         'navigation',
-        'sticky-header',
         'input-controls',
+        'sticky-header',
         'application',
       ].reverse(),
     }),

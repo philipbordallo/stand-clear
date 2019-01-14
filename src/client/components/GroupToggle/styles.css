@@ -4,5 +4,11 @@
   margin: 0;
   padding: 0;
   display: flex;
-  margin-top: 1rem;
+  max-width: $BREAKPOINT_EXTRA_SMALL;
+  z-index: stack('input-controls');
+  position: relative;
+
+  @media (width <= $BREAKPOINT_EXTRA_SMALL) {
+    font-size: .875rem;
+  }
 }
