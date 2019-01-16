@@ -21,5 +21,8 @@ function InformationCalloutPlaceholder(props) {
 InformationCalloutPlaceholder.propTypes = {
   hide: PT.bool,
 };
+InformationCalloutPlaceholder.defaultProps = {
+  hide: false,
+};
 
 export default InformationCalloutPlaceholder;

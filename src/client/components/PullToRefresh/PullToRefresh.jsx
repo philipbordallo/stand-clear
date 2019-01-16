@@ -52,6 +52,9 @@ function PullToRefresh(props) {
       setMoveOffset(event.touches[0].clientY);
       setTransition('off');
     }
+    else {
+      setMoveOffset(0);
+    }
   };
 
   const handleTouchEnd = () => {

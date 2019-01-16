@@ -9,7 +9,6 @@ const INITIAL_STATE = {
   data: null,
   error: null,
   groupBy: 'direction',
-  departuresList: [],
 };
 
 function departuresReducer(state = INITIAL_STATE, action) {
@@ -19,7 +18,6 @@ function departuresReducer(state = INITIAL_STATE, action) {
         ...state,
         isLoading: true,
         hasLoaded: false,
-        data: INITIAL_STATE.data,
         error: INITIAL_STATE.error,
       };
 
