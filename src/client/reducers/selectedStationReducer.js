@@ -3,7 +3,6 @@ import ActionTypes from 'actions/ActionTypes';
 
 const INITIAL_STATE = {
   abbreviation: '',
-  departures: null,
   name: '',
 };
 

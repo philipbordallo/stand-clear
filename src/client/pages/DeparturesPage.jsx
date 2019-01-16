@@ -45,15 +45,9 @@ function DeparturesPage(props) {
     }
   }, [hasLoaded]);
 
-  let name = '';
-
-  if (station === selectedStation.abbreviation) {
-    name = selectedStation.name;
-  }
-
-  if (hasLoaded) {
-    name = departures.data.name;
-  }
+  const name = station === selectedStation.abbreviation
+    ? selectedStation.name
+    : '';
 
   if (departures.hasError) {
     return (
@@ -65,7 +59,7 @@ function DeparturesPage(props) {
   }
 
   return (
-    <Page title={ name }>
+    <Page title={ name || (hasLoaded && departures.data.name) }>
       <PullToRefresh setIsRefresh={ setIsRefresh } hasRefreshed={ hasLoaded }>
         <CurrentStation
           groupDepartures={ groupDepartures }
