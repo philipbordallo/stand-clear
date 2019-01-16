@@ -7,7 +7,7 @@ import Classes from './styles';
 const LOAD_THRESHOLD = 40;
 
 function PullToRefresh(props) {
-  const { children, setRefresh, hasRefreshed } = props;
+  const { children, setIsRefresh, hasRefreshed } = props;
 
   const [amount, setAmount] = useState(0);
   const [start, setStart] = useState(0);
@@ -19,7 +19,7 @@ function PullToRefresh(props) {
       setAmount(0);
       setMoveOffset(0);
       setStart(0);
-      setRefresh(false);
+      setIsRefresh(false);
     }
   }, [hasRefreshed]);
 
@@ -27,7 +27,7 @@ function PullToRefresh(props) {
     const difference = moveOffset - start;
 
     if (amount >= LOAD_THRESHOLD) {
-      setRefresh(true);
+      setIsRefresh(true);
       setAmount(LOAD_THRESHOLD);
       setTransition('on');
     }
@@ -99,7 +99,7 @@ function PullToRefresh(props) {
 PullToRefresh.propTypes = {
   children: PT.node.isRequired,
   hasRefreshed: PT.bool.isRequired,
-  setRefresh: PT.func.isRequired,
+  setIsRefresh: PT.func.isRequired,
 };
 
 export default PullToRefresh;

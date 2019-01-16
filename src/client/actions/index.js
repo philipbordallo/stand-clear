@@ -1,3 +1,4 @@
+export { default as cacheStationDepartures } from './cacheStationDepartures';
 export { default as clearDepartures } from './clearDepartures';
 export { default as getAdvisories } from './getAdvisories';
 export { default as getDepartures } from './getDepartures';

@@ -10,6 +10,8 @@ const ActionTypes = {
   GROUP_DEPARTURES: 'departures::GROUP_DEPARTURES',
 
   UPDATE_STATION_LINK: 'navigation::UPDATE_STATION_LINK',
+
+  CACHE_STATION_DEPATURES: 'selectedStation::CACHE_STATION_DEPATURES',
 };
 
 export default ActionTypes;

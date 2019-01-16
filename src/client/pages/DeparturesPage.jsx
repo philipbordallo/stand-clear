@@ -15,43 +15,44 @@ function DeparturesPage(props) {
   const { station } = match.params;
 
   const [
-    { departures },
+    { departures, selectedStation },
     {
       getDepartures,
       updateStationLink,
       clearDepartures,
       groupDepartures,
+      cacheStationDepartures,
     },
   ] = useRedux();
 
-  const [refresh, setRefresh] = useState(false);
-  const [prevName, setPrevName] = useState('');
+  const [isRefresh, setIsRefresh] = useState(false);
 
-  useEffect(() => {
-    setRefresh(true);
-    return () => {
-      clearDepartures();
-    };
+  useEffect(() => () => {
+    clearDepartures();
   }, []);
 
   useEffect(() => {
-    if (refresh) {
-      updateStationLink(station);
-      getDepartures(station);
-    }
-  }, [station, refresh]);
+    updateStationLink(station);
+    getDepartures(station, isRefresh);
+  }, [station, isRefresh]);
 
   const hasLoaded = !departures.isLoading && departures.hasLoaded;
 
-  let name = hasLoaded
-    ? departures.data.name
-    : '';
+  // If departures have fully load, cache that data
+  useEffect(() => {
+    if (hasLoaded) {
+      cacheStationDepartures(departures.data);
+    }
+  }, [hasLoaded]);
 
-  if (name && name !== prevName) {
-    setPrevName(name);
+  let name = '';
+
+  if (station === selectedStation.abbreviation) {
+    name = selectedStation.name;
   }
-  else {
-    name = prevName;
+
+  if (hasLoaded) {
+    name = departures.data.name;
   }
 
   if (departures.hasError) {
@@ -65,7 +66,7 @@ function DeparturesPage(props) {
 
   return (
     <Page title={ name }>
-      <PullToRefresh setRefresh={ setRefresh } hasRefreshed={ hasLoaded }>
+      <PullToRefresh setIsRefresh={ setIsRefresh } hasRefreshed={ hasLoaded }>
         <CurrentStation
           groupDepartures={ groupDepartures }
           hasLoaded={ hasLoaded }
