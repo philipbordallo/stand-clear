@@ -1,5 +1,4 @@
 import React from 'react';
-// import PT from 'prop-types';
 
 import Link from 'components/Link';
 
@@ -20,6 +19,5 @@ function About() {
     </div>
   );
 }
-// About.propTypes = {};
 
 export default About;

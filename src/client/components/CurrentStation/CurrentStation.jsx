@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PT from 'prop-types';
 
 import CurrentDepartures from 'components/CurrentDepartures';
+import CurrentDeparturesPlaceholder from 'components/CurrentDeparturesPlaceholder';
 import GroupToggle from 'components/GroupToggle';
 import GroupToggleItem from 'components/GroupToggleItem';
 import InformationCallout from 'components/InformationCallout';
+import InformationCalloutPlaceholder from 'components/InformationCalloutPlaceholder';
 import VisuallyHidden from 'components/VisuallyHidden';
 
 import { CurrentDepartureShape } from 'components/CurrentDeparture/propTypes';
@@ -29,22 +31,33 @@ const GROUP_TOGGLE_ITEMS = [
 
 function CurrentStation(props) {
   const {
-    showContent,
     abbreviation,
     date,
+    hasLoaded,
     time,
     listGrouped,
     name,
     groupDepartures,
   } = props;
 
-  const hasDepartures = Object.keys(listGrouped).length > 0;
-
+  const [showContent, setShowContent] = useState(false);
   const [groupBy, setGroupBy] = useState('direction');
+
+  // If content hasn't finished loading, don't show it and instead show placeholders
+  useEffect(() => {
+    if (!hasLoaded) {
+      setShowContent(false);
+    }
+  }, [hasLoaded]);
 
   const handleChange = (event) => {
     setGroupBy(event.target.value);
     groupDepartures(event.target.value);
+  };
+
+  // Once the placeholder transition has finshed, show content
+  const handlePlaceholderTransition = () => {
+    setShowContent(true);
   };
 
   const renderDepartures = (group) => {
@@ -64,6 +77,7 @@ function CurrentStation(props) {
 
   const renderGroupToggleItem = (item) => {
     const { value, text } = item;
+
     return (
       <GroupToggleItem
         key={ value }
@@ -77,28 +91,38 @@ function CurrentStation(props) {
     );
   };
 
-  if (showContent) {
-    return (
-      <div>
-        <div className={ Classes.container }>
-          <GroupToggle>
-            { GROUP_TOGGLE_ITEMS.map(renderGroupToggleItem) }
-          </GroupToggle>
-        </div>
-        { hasDepartures ? Object.keys(listGrouped).map(renderDepartures) : null }
-
-        <InformationCallout>
-          Accurate as of { time } on { date } for { name } Station.
-        </InformationCallout>
-      </div>
+  const departureContent = showContent
+    ? Object.keys(listGrouped).map(renderDepartures)
+    : (
+      <CurrentDeparturesPlaceholder
+        hide={ hasLoaded }
+        onHide={ handlePlaceholderTransition }
+      />
     );
-  }
 
-  return null;
+  const informationCalloutContent = showContent
+    ? (
+      <InformationCallout>
+        Accurate as of { time } on { date } for { name } Station.
+      </InformationCallout>
+    )
+    : (<InformationCalloutPlaceholder hide={ hasLoaded } />);
+
+  return (
+    <div>
+      <div className={ Classes.container }>
+        <GroupToggle>
+          { GROUP_TOGGLE_ITEMS.map(renderGroupToggleItem) }
+        </GroupToggle>
+      </div>
+      { departureContent }
+      { informationCalloutContent }
+    </div>
+  );
 }
 CurrentStation.propTypes = {
   groupDepartures: PT.func.isRequired,
-  showContent: PT.bool.isRequired,
+  hasLoaded: PT.bool.isRequired,
   abbreviation: PT.string,
   date: PT.string,
   name: PT.string,

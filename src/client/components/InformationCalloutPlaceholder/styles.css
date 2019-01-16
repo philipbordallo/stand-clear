@@ -1,0 +1,23 @@
+.root {
+  composes: root from 'components/InformationCallout/styles';
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 250ms;
+}
+
+.hidePlaceholder {
+  opacity: 0;
+}
+
+.icon {
+  composes: icon from 'components/InformationCallout/styles';
+}
+
+.paragraph {
+  composes: paragraph from 'components/InformationCallout/styles';
+  background-color: var(--color01);
+  height: .8125rem;
+  width: 100%;
+  max-width: 200px;
+}
+

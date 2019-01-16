@@ -1,0 +1,39 @@
+.root {
+  composes: root from 'components/CurrentDeparture/styles';
+}
+
+.icon {
+  composes: icon from 'components/CurrentDeparture/styles';
+  background-color: var(--color02);
+  border-color: var(--color02)
+}
+
+.information {
+  composes: information from 'components/CurrentDeparture/styles';
+  width: 100%;
+}
+
+.title {
+  composes: title from 'components/CurrentDeparture/styles';
+  background-color: var(--color02);
+  width: 100%;
+  max-width: 100px;
+  height: 1.25rem;
+}
+
+.detailPlaceholder {
+  background-color: var(--color02);
+  width: 100%;
+  max-width: 100px;
+  height: 1rem;
+  display: inline-block;
+}
+
+.carCountPlaceholder {
+  background-color: var(--color02);
+  width: 100%;
+  max-width: 60px;
+  height: 1rem;
+  display: inline-block;
+  margin-left: .5rem;
+}

@@ -1,0 +1,34 @@
+.root {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 250ms;
+}
+
+.hidePlaceholder {
+  opacity: 0;
+}
+
+.title {
+  composes: title from 'components/CurrentDepartures/styles';
+}
+
+.titleContainer {
+  composes: titleContainer from 'components/CurrentDepartures/styles';
+  align-items: center;
+  height: 2.25rem;
+}
+
+.abbreviation {
+  composes: abbreviation from 'components/CurrentDepartures/styles';
+}
+
+.container {
+  composes: container from 'components/CurrentDepartures/styles';
+}
+
+.titlePlaceholder {
+  background-color: var(--color01);
+  height: 1.5rem;
+  width: 100%;
+  max-width: 100px;
+}

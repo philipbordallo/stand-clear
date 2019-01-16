@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PT from 'prop-types';
 
 import ReactRouterPT from 'propTypes/ReactRouterPT';
@@ -6,9 +6,9 @@ import ReactRouterPT from 'propTypes/ReactRouterPT';
 import { useRedux } from 'hooks';
 
 import CurrentStation from 'components/CurrentStation';
+import PullToRefresh from 'components/PullToRefresh';
 import ErrorPage from 'pages/ErrorPage';
 import Page from 'components/Page';
-
 
 function DeparturesPage(props) {
   const { match } = props;
@@ -24,16 +24,35 @@ function DeparturesPage(props) {
     },
   ] = useRedux();
 
-  useEffect(() => {
-    updateStationLink(station);
-    getDepartures(station);
+  const [refresh, setRefresh] = useState(false);
+  const [prevName, setPrevName] = useState('');
 
+  useEffect(() => {
+    setRefresh(true);
     return () => {
       clearDepartures();
     };
-  }, [station]);
+  }, []);
+
+  useEffect(() => {
+    if (refresh) {
+      updateStationLink(station);
+      getDepartures(station);
+    }
+  }, [station, refresh]);
 
   const hasLoaded = !departures.isLoading && departures.hasLoaded;
+
+  let name = hasLoaded
+    ? departures.data.name
+    : '';
+
+  if (name && name !== prevName) {
+    setPrevName(name);
+  }
+  else {
+    name = prevName;
+  }
 
   if (departures.hasError) {
     return (
@@ -45,12 +64,14 @@ function DeparturesPage(props) {
   }
 
   return (
-    <Page title={ hasLoaded ? departures.data.name : '' }>
-      <CurrentStation
-        groupDepartures={ groupDepartures }
-        showContent={ hasLoaded }
-        { ...departures.data }
-      />
+    <Page title={ name }>
+      <PullToRefresh setRefresh={ setRefresh } hasRefreshed={ hasLoaded }>
+        <CurrentStation
+          groupDepartures={ groupDepartures }
+          hasLoaded={ hasLoaded }
+          { ...departures.data }
+        />
+      </PullToRefresh>
     </Page>
   );
 }
