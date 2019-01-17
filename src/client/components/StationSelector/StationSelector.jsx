@@ -4,14 +4,13 @@ import PT from 'prop-types';
 import ReactRouterPT from 'propTypes/ReactRouterPT';
 
 import { withRouter } from 'react-router-dom';
-import collectStationsByAlpha from 'utilities/collectStationsByAlpha';
+import { useStationSearch } from 'hooks';
 
+import AlphaGroup from 'components/AlphaGroup';
 import Button from 'components/Button';
 import Icon from 'components/Icon';
 import Link from 'components/Link';
 import SearchInput from 'components/SearchInput';
-
-import STATION_LIST from 'shared/meta/STATION_LIST';
 
 import Classes from './styles';
 
@@ -19,7 +18,8 @@ import Classes from './styles';
 function StationSelector(props) {
   const { getClosestStation, closestStation, history } = props;
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const stations = useStationSearch(searchTerm);
 
   useEffect(() => {
     if (closestStation.abbreviation) {
@@ -28,26 +28,16 @@ function StationSelector(props) {
     }
   }, [closestStation.abbreviation]);
 
-  const stations = STATION_LIST
-    .filter((station) => {
-      const { name, shortName, city } = station;
-      const searchValueRegExp = new RegExp(searchValue.toLowerCase().trim(), 'g');
-      const found = `${name.toLowerCase()} ${shortName.toLowerCase()} ${city.toLowerCase()}`
-        .match(searchValueRegExp);
-      return found && found.length > 0;
-    })
-    .reduce(collectStationsByAlpha, {});
-
   const handleClick = () => {
     getClosestStation();
   };
 
   const handleChange = (event) => {
-    setSearchValue(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   const handleClear = () => {
-    setSearchValue('');
+    setSearchTerm('');
   };
 
   const renderStations = (station) => {
@@ -62,11 +52,13 @@ function StationSelector(props) {
     );
   };
 
-  const renderAlphaGroup = (group, index) => (
-    <div className={ Classes.group } key={ index }>
-      <h2 className={ Classes.groupTitle }>{ group }</h2>
-      { stations[group].map(renderStations) }
-    </div>
+  const renderAlphaGroup = group => (
+    <AlphaGroup
+      key={ group }
+      title={ group }
+      items={ stations[group] }
+      renderer={ renderStations }
+    />
   );
 
   const stationsContent = Object.keys(stations).map(renderAlphaGroup);
@@ -78,12 +70,12 @@ function StationSelector(props) {
           className={ Classes.button }
           onClick={ handleClick }
         >
-          <Icon name="direction-filled" size="24" /> Find Closest Station
+          <Icon name="direction-filled" /> Find Closest Station
         </Button>
         <SearchInput
           onClear={ handleClear }
           onChange={ handleChange }
-          searchValue={ searchValue }
+          searchTerm={ searchTerm }
         />
       </div>
 

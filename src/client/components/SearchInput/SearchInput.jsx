@@ -8,7 +8,7 @@ import Classes from './styles';
 
 function SearchInput(props) {
   const {
-    searchValue,
+    searchTerm,
     onChange,
     onClear,
   } = props;
@@ -18,7 +18,7 @@ function SearchInput(props) {
   };
 
   const renderIcon = () => {
-    if (searchValue) {
+    if (searchTerm) {
       return (
         <button
           type="button"
@@ -45,7 +45,7 @@ function SearchInput(props) {
         className={ Classes.input }
         type="search"
         onChange={ onChange }
-        value={ searchValue }
+        value={ searchTerm }
         aria-label="Search Stations"
       />
       { renderIcon() }
@@ -55,7 +55,7 @@ function SearchInput(props) {
 SearchInput.propTypes = {
   onClear: PT.func.isRequired,
   onChange: PT.func.isRequired,
-  searchValue: PT.string.isRequired,
+  searchTerm: PT.string.isRequired,
 };
 
 export default SearchInput;

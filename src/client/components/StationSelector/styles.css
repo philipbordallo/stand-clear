@@ -63,14 +63,3 @@
   margin-right: auto;
   margin: 0 auto .1875rem 0;
 }
-
-.group {
-  display: flex;
-  flex-direction: column;
-}
-
-.groupTitle {
-  margin-bottom: .5rem;
-  font-weight: normal;
-  font-size: 1rem;
-}
