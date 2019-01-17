@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import Link from 'components/Link';
 import noop from 'utilities/noop';
 
 import Classes from './styles';
@@ -13,11 +14,24 @@ function Button(props) {
     onClick,
     type,
     disabled,
+    to,
   } = props;
 
   let classNames = Classes.root;
   if (type) classNames += ` ${Classes[type]}`;
   if (className) classNames += ` ${className}`;
+
+  if (to) {
+    return (
+      <Link
+        to={ to }
+        className={ classNames }
+        onClick={ onClick }
+      >
+        { children }
+      </Link>
+    );
+  }
 
   return (
     <button
@@ -40,6 +54,7 @@ Button.propTypes = {
     'text',
   ]),
   disabled: PT.bool,
+  to: PT.string,
 };
 Button.defaultProps = {
   className: '',
@@ -47,6 +62,7 @@ Button.defaultProps = {
   onClick: noop,
   type: 'primary',
   disabled: false,
+  to: '',
 };
 
 export default Button;
