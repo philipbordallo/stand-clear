@@ -5,6 +5,7 @@ import ReactRouterPT from 'propTypes/ReactRouterPT';
 
 import { withRouter } from 'react-router-dom';
 import { useStationSearch } from 'hooks';
+import groupStationsByAlpha from 'utilities/groupStationsByAlpha';
 
 import AlphaGroup from 'components/AlphaGroup';
 import Button from 'components/Button';
@@ -20,6 +21,7 @@ function StationSelector(props) {
 
   const [searchTerm, setSearchTerm] = useState('');
   const stations = useStationSearch(searchTerm);
+  const stationsGrouped = groupStationsByAlpha(stations);
 
   useEffect(() => {
     if (closestStation.abbreviation) {
@@ -56,12 +58,12 @@ function StationSelector(props) {
     <AlphaGroup
       key={ group }
       title={ group }
-      items={ stations[group] }
+      items={ stationsGrouped[group] }
       renderer={ renderStations }
     />
   );
 
-  const stationsContent = Object.keys(stations).map(renderAlphaGroup);
+  const stationsContent = Object.keys(stationsGrouped).map(renderAlphaGroup);
 
   return (
     <div className={ Classes.root }>
