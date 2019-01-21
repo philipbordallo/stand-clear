@@ -26,3 +26,8 @@
     background-color: white;
   }
 }
+
+.settingsHeading {
+  font-size: 1.125rem;
+  margin: 0;
+}

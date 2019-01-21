@@ -1,0 +1,39 @@
+.root {
+  composes: container from 'css/default/styles';
+  margin-bottom: 2rem;
+}
+
+.title {
+  composes: settingsHeading from 'css/default/styles';
+  margin-bottom: .25rem;
+  display: flex;
+  align-items: center;
+}
+
+.titleIcon {
+  margin-left: .25rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  margin: 0 0 .1875rem 0;
+}
+
+.link {
+  background-color: $COLOR_BRAND_ALT_LIGHT;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: .5rem;
+  font-smoothing: antialiased;
+}
+
+.button {
+  padding: .25rem .5rem;
+  margin-left: .25rem;
+}

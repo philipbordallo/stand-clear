@@ -6,7 +6,7 @@ import Classes from './styles';
 
 function About() {
   return (
-    <div className={ Classes.root }>
+    <section className={ Classes.root }>
       <h2 className={ Classes.title }>
         About
       </h2>
@@ -16,7 +16,7 @@ function About() {
       <p>
         See something wrong or want to improve this site? Send a PR on <Link to="https://github.com/philipbordallo/stand-clear" type="external">GitHub</Link>.
       </p>
-    </div>
+    </section>
   );
 }
 

@@ -3,5 +3,5 @@
 }
 
 .title {
-  margin: 0;
+  composes: settingsHeading from 'css/default/styles';
 }
