@@ -23,7 +23,7 @@
   border-color: currentColor;
 
   &:hover {
-    background-color: $COLOR_BRAND_ALT_LIGHT;
+    background-color: $COLOR_BRAND_ALT_TRANSPARENT;
   }
 }
 

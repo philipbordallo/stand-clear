@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useFavorites } from 'hooks';
 
 import Link from 'components/Link';
 import Icon from 'components/Icon';
 import Button from 'components/Button';
+import FavoritesSelect from 'components/FavoritesSelect';
 
 import STATION_LIST from 'shared/meta/STATION_LIST';
 
@@ -12,11 +13,22 @@ import Classes from './styles';
 
 function Favorites() {
   const [favorites, { addFavorite, removeFavorite }] = useFavorites();
+  const [canAddFavorite, toggleAddFavorite] = useState(false);
 
   const stations = STATION_LIST.filter(station => favorites.includes(station.abbreviation));
+  const options = stations.reduce(
+    (accumulator, station) => accumulator.set(station.abbreviation, true), new Map(),
+  );
 
-  const handleAdd = abbreviation => () => {
-    addFavorite(abbreviation);
+  const handleAdd = () => {
+    toggleAddFavorite(prevState => !prevState);
+  };
+
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      addFavorite(event.target.name);
+      toggleAddFavorite(prevState => !prevState);
+    }
   };
 
   const handleRemove = abbreviation => () => {
@@ -24,13 +36,13 @@ function Favorites() {
   };
 
   const renderListItem = (item) => {
-    const { name, abbreviation } = item;
+    const { shortName, abbreviation } = item;
 
     const url = `/station/${abbreviation.toLowerCase()}`;
 
     return (
       <li className={ Classes.listItem } key={ abbreviation }>
-        <Link to={ url } className={ Classes.link }>{ name }</Link>
+        <Link to={ url } className={ Classes.link }>{ shortName }</Link>
         <Button
           type="text"
           className={ Classes.button }
@@ -42,6 +54,16 @@ function Favorites() {
     );
   };
 
+  const favoriteContent = canAddFavorite
+    ? (
+      <FavoritesSelect
+        options={ options }
+        onChange={ handleChange }
+        onToggleDropdown={ handleAdd }
+      />
+    )
+    : (<Button type="secondary" onClick={ handleAdd }>Add Favorite Station</Button>);
+
   return (
     <section className={ Classes.root }>
       <h2 className={ Classes.title }>
@@ -50,8 +72,7 @@ function Favorites() {
       <ul className={ Classes.list }>
         { stations.map(renderListItem) }
       </ul>
-
-      <Button type="secondary" onClick={ handleAdd('19TH') }>Add Favorite Station</Button>
+      { favoriteContent }
     </section>
   );
 }

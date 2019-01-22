@@ -54,7 +54,7 @@
 }
 
 .link {
-  background-color: $COLOR_BRAND_ALT_LIGHT;
+  background-color: $COLOR_BRAND_ALT_TRANSPARENT;
   text-decoration: none;
   border-radius: 5px;
   padding: .5rem;

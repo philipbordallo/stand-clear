@@ -2,7 +2,7 @@ module.exports = {
   // COLORS
   COLOR_BRAND_PRIMARY: 'hsl(198, 100%, 42%)',
   COLOR_BRAND_ALT: 'hsl(208, 75%, 32%)',
-  COLOR_BRAND_ALT_LIGHT: 'hsla(208, 90%, 60%, 0.1)',
+  COLOR_BRAND_ALT_TRANSPARENT: 'hsla(208, 90%, 60%, 0.1)',
   COLOR_BRAND_FOCUS: 'hsla(153, 100%, 42%, .5)',
   COLOR_DEFAULT_BLACK: 'black',
   COLOR_DEFAULT_BLUE: '#001fff',

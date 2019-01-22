@@ -11,6 +11,7 @@ function SearchInput(props) {
     searchTerm,
     onChange,
     onClear,
+    className,
   } = props;
 
   const handleClick = () => {
@@ -39,10 +40,13 @@ function SearchInput(props) {
     );
   };
 
+  let inputClassNames = Classes.input;
+  if (className) inputClassNames += ` ${className}`;
+
   return (
     <div className={ Classes.root }>
       <input
-        className={ Classes.input }
+        className={ inputClassNames }
         type="search"
         onChange={ onChange }
         value={ searchTerm }
@@ -56,6 +60,10 @@ SearchInput.propTypes = {
   onClear: PT.func.isRequired,
   onChange: PT.func.isRequired,
   searchTerm: PT.string.isRequired,
+  className: PT.string,
+};
+SearchInput.defaultProps = {
+  className: '',
 };
 
 export default SearchInput;

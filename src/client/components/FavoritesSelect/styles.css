@@ -1,0 +1,84 @@
+.root {
+  position: relative;
+  max-width: 218px;
+  z-index: stack('modal');
+}
+
+.backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: stack('modal-backdrop');
+  cursor: default;
+}
+
+.searchInput {
+  border-radius: 5px 5px 0 0;
+  background-color: $COLOR_DEFAULT_WHITE;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.dropdown {
+  z-index: stack('dropdown');
+  position: absolute;
+  width: 100%;
+  composes: transparentBackground from 'css/default/styles';
+  overflow: hidden;
+}
+
+.options {
+  max-height: 0;
+  transition-property: max-height, border-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+  overflow: auto;
+  position: relative;
+  border-width: 0 1px 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.optionsFull {
+  max-height: 200px;
+  border-color: $COLOR_DEFAULT_BLACK;
+}
+
+.optionWrapper {
+  display: block;
+}
+
+.option {
+  padding: .5rem;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 250ms;
+
+  &:hover {
+    background-color: $COLOR_BRAND_ALT_TRANSPARENT;
+  }
+
+  @nest .checkbox:checked ~ & {
+    background-color: $COLOR_BRAND_ALT;
+    color: $COLOR_DEFAULT_WHITE;
+  }
+
+  @nest .checkbox:active ~ & {
+    background-color: $COLOR_BRAND_FOCUS;
+  }
+}
+
+.shortName {
+  @nest .checkbox:focus ~ .option & {
+    border-bottom: 2px solid $COLOR_BRAND_FOCUS;
+  }
+}

@@ -1,6 +1,7 @@
 .root {
   display: flex;
   position: relative;
+  z-index: stack('input');
 }
 
 .input {

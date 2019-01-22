@@ -45,9 +45,12 @@ module.exports = (loader) => {
     stack({
       list: [
         'modal',
+        'modal-backdrop',
         'navigation',
         'input-controls',
+        'input',
         'sticky-header',
+        'dropdown',
         'application',
       ].reverse(),
     }),
