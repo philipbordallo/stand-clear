@@ -10,10 +10,6 @@
   align-items: center;
 }
 
-.titleIcon {
-  margin-left: .25rem;
-}
-
 .list {
   list-style: none;
   padding: 0;
@@ -31,6 +27,12 @@
   border-radius: 5px;
   padding: .5rem;
   font-smoothing: antialiased;
+  display: inline-flex;
+  align-items: center;
+}
+
+.linkIcon {
+  margin-left: .25rem;
 }
 
 .button {

@@ -58,8 +58,18 @@
   text-decoration: none;
   border-radius: 5px;
   padding: .5rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-smoothing: antialiased;
   margin-right: auto;
   margin: 0 auto .1875rem 0;
+}
+
+.linkIcon {
+  margin-left: .25rem;
+}
+
+.horizontalRule {
+  border: 1px solid $COLOR_DEFAULT_WHITESMOKE;
+  margin: 1.5rem 1rem;
 }

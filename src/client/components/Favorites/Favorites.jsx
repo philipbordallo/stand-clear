@@ -11,6 +11,7 @@ import STATION_LIST from 'shared/meta/STATION_LIST';
 
 import Classes from './styles';
 
+
 function Favorites() {
   const [favorites, { addFavorite, removeFavorite }] = useFavorites();
   const [canAddFavorite, toggleAddFavorite] = useState(false);
@@ -42,7 +43,10 @@ function Favorites() {
 
     return (
       <li className={ Classes.listItem } key={ abbreviation }>
-        <Link to={ url } className={ Classes.link }>{ shortName }</Link>
+        <Link to={ url } className={ Classes.link }>
+          { shortName }
+          <Icon name="star-outline" size="20" className={ Classes.linkIcon } />
+        </Link>
         <Button
           type="text"
           className={ Classes.button }
@@ -67,7 +71,7 @@ function Favorites() {
   return (
     <section className={ Classes.root }>
       <h2 className={ Classes.title }>
-        Favorites <Icon name="star-filled" size="20" className={ Classes.titleIcon } />
+        Favorites
       </h2>
       <ul className={ Classes.list }>
         { stations.map(renderListItem) }
