@@ -4,8 +4,8 @@
 
 .icon {
   composes: icon from 'components/CurrentDeparture/styles';
-  background-color: var(--color02);
-  border-color: var(--color02)
+  background-color: var(--color03);
+  border-color: var(--color03)
 }
 
 .information {
@@ -19,14 +19,16 @@
   width: 100%;
   max-width: 100px;
   height: 1.25rem;
+  border-radius: 5px;
 }
 
 .detailPlaceholder {
-  background-color: var(--color02);
+  background-color: var(--color01);
   width: 100%;
   max-width: 100px;
   height: 1rem;
   display: inline-block;
+  border-radius: 5px;
 }
 
 .carCountPlaceholder {
@@ -36,4 +38,5 @@
   height: 1rem;
   display: inline-block;
   margin-left: .5rem;
+  border-radius: 5px;
 }

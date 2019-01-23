@@ -1,41 +1,19 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import Advisory from 'components/Advisory';
 import Link from 'components/Link';
-import Icon from 'components/Icon';
 import InformationCallout from 'components/InformationCallout';
 
 import Classes from './styles';
 
+
 function AdvisoriesList(props) {
   const { date, time, list } = props;
 
-  const renderAdvisory = (advisory, index) => {
-    const isEmergency = advisory.type === 'EMERGENCY';
-    const isDelay = advisory.type === 'DELAY';
-
-    const iconType = isEmergency
-      ? 'warning-filled'
-      : 'warning-outline';
-
-    const iconContent = isEmergency || isDelay
-      ? (
-        <Icon name={ iconType } className={ Classes.icon } />
-      ) : null;
-
-    let advisoryClassNames = Classes.advisory;
-    if (isDelay) advisoryClassNames = Classes.delayAdvisory;
-    if (isEmergency) advisoryClassNames = Classes.emergencyAdvisory;
-
-    return (
-      <div className={ advisoryClassNames } key={ index }>
-        { iconContent }
-        <p className={ Classes.description }>
-          { advisory.description }
-        </p>
-      </div>
-    );
-  };
+  const renderAdvisory = (advisory, index) => (
+    <Advisory key={ index } { ...advisory } />
+  );
 
   return (
     <div>

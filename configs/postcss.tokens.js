@@ -24,6 +24,7 @@ module.exports = {
   COLOR_TRANSPARENT_BLACK: 'rgba(0,0,0,.95)',
   COLOR_TRANSPARENT_WHITE: 'rgba(255,255,255,.95)',
   COLOR_WARNING_RED: '#e53935',
+  COLOR_WARNING_LIGHT_RED: '#ffebee',
 
   // PADDINGS
   PADDING_SMALL: '.5rem',

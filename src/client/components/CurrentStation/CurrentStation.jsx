@@ -43,7 +43,7 @@ function CurrentStation(props) {
   const [showContent, setShowContent] = useState(false);
   const [groupBy, setGroupBy] = useState('direction');
 
-  // If content hasn't finished loading, don't show it and instead show placeholders
+  // If content hasn't finished loading after refresh, don't show it and instead show placeholders
   useEffect(() => {
     if (!hasLoaded) {
       setShowContent(false);

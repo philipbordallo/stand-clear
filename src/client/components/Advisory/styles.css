@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.delay {
+  composes: root;
+  padding: .25rem;
+  border-radius: 3px;
+}
+
+.emergency {
+  composes: delay;
+  background-color: $COLOR_WARNING_LIGHT_RED;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: .5rem;
+
+  @nest .emergencyAdvisory & {
+    color: $COLOR_WARNING_RED;
+  }
+}
