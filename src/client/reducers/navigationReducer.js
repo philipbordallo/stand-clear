@@ -28,7 +28,7 @@ function addNotification(key, links, notifications = []) {
   });
 }
 
-function navigationReducer(state = INITIAL_STATE, action) {
+function navigationReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case ActionTypes.UPDATE_STATION_LINK:
       return updateStationLink(state, action.data);

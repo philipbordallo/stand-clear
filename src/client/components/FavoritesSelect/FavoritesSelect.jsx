@@ -67,18 +67,18 @@ function FavoritesSelect(props) {
       <label
         key={ station.abbreviation }
         className={ Classes.optionWrapper }
-        onKeyDown={ handleKeyDown }
       >
         <input
           type="checkbox"
           name={ station.abbreviation }
           className={ Classes.checkbox }
+          onKeyDown={ handleKeyDown }
           onChange={ onChange }
           checked={ isChecked }
         />
         <div className={ Classes.option }>
           <span className={ Classes.shortName }>
-            { station.shortName }
+            {station.shortName}
           </span>
         </div>
       </label>
@@ -102,7 +102,7 @@ function FavoritesSelect(props) {
         />
         <div className={ Classes.dropdown }>
           <div className={ optionsClassName }>
-            { hasFilteredStations ? filteredStations.map(renderStations) : null }
+            {hasFilteredStations ? filteredStations.map(renderStations) : null}
           </div>
         </div>
       </div>

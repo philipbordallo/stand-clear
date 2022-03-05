@@ -1,4 +1,4 @@
-var mockEndpoint;
+let mockEndpoint;
 
 function getArgs(endpoint) {
   if (endpoint === 'http://example.com') {
@@ -11,13 +11,13 @@ function getArgs(endpoint) {
   return ['error', { status: 500 }];
 }
 
-var Request = {
+const Request = {
   get(endpoint) {
     mockEndpoint = endpoint;
     return this;
   },
   end: jest.fn().mockImplementation((callback) => {
-    var args = getArgs(mockEndpoint);
+    const args = getArgs(mockEndpoint);
     callback(args[0], args[1]);
   }),
 };

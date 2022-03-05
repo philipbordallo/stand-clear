@@ -40,5 +40,5 @@ describe('API should', () => {
     });
 
     expect(results).toEqual(expectations);
-  })
-})
+  });
+});

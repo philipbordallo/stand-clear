@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-function advisoriesReducer(state = INITIAL_STATE, action) {
+function advisoriesReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case ActionTypes.GET_ADVISORIES_START:
       return {

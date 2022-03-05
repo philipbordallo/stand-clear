@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   name: '',
 };
 
-function selectedStationReducer(state = INITIAL_STATE, action) {
+function selectedStationReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case ActionTypes.CACHE_STATION_DEPATURES:
       return {

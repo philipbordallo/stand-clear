@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   groupBy: 'direction',
 };
 
-function departuresReducer(state = INITIAL_STATE, action) {
+function departuresReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case ActionTypes.GET_DEPARTURES_START:
       return {

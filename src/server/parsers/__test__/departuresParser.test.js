@@ -9,24 +9,24 @@ const TESTS = [
   [
     'Return null if there is null data',
     null,
-    null
+    null,
   ],
   [
     'Return correctly parsed data',
     DEPARTURES_BART_API,
-    DEPARTURES_PARSED
+    DEPARTURES_PARSED,
   ],
   [
     'Return correctly empty data',
     DEPARTURES_BART_API_EMPTY,
     {
-      "abbreviation": "POWL",
-      "list": [],
-      "date": "11/20/2018",
-      "name": "Powell St.",
-      "time": "08:23:16 PM PST"
-    }
-  ]
+      abbreviation: 'POWL',
+      list: [],
+      date: '11/20/2018',
+      name: 'Powell St.',
+      time: '08:23:16 PM PST',
+    },
+  ],
 ];
 
 describe('departuresParser should', () => {

@@ -38,19 +38,20 @@ function Link(props) {
         onClick={ onClick }
         { ...externalProps }
       >
-        { children }
+        {children}
       </a>
     );
   }
 
   return (
     <RouterLink to={ to } className={ linkClassName } onClick={ onClick }>
-      { children }
+      {children}
     </RouterLink>
   );
 }
 Link.propTypes = {
   to: PT.string.isRequired,
+  children: PT.node.isRequired,
   className: PT.string,
   type: PT.oneOf([
     'external',
@@ -59,6 +60,7 @@ Link.propTypes = {
   ]),
   onClick: PT.func,
 };
+
 Link.defaultProps = {
   className: '',
   type: 'router',

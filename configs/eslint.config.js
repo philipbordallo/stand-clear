@@ -1,5 +1,11 @@
 module.exports = {
-  extends: '@philipbordallo/react',
+  env: {
+    'jest': true
+  },
+  extends: [
+    '@philipbordallo',
+    '@philipbordallo/react'
+  ],
   plugins: [
     'react-hooks',
   ],
